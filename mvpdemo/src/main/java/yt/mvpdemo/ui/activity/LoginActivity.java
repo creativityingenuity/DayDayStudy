@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import yt.mvpdemo.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -28,5 +29,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.btn_login)
+    public void onViewClicked() {
+        /*登录*/
+        String name = mEtName.getText().toString().trim();
+        String pwd = mEtPwd.getText().toString().trim();
+
     }
 }
