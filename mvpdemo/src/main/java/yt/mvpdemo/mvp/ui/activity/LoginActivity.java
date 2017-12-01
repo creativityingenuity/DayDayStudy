@@ -1,4 +1,4 @@
-package yt.mvpdemo.ui.activity;
+package yt.mvpdemo.mvp.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;

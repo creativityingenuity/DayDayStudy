@@ -1,4 +1,4 @@
-package yt.mvpdemo.ui.activity;
+package yt.mvpdemo.mvp.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
