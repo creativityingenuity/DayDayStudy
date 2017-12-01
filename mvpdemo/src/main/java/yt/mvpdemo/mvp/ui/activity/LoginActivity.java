@@ -10,8 +10,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import yt.mvpdemo.R;
+import yt.mvpdemo.mvp.contract.LoginContract;
+import yt.mvpdemo.mvp.present.LoginPresentImpl;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements LoginContract.LoginView{
 
     @Bind(R.id.et_name)
     EditText mEtName;
@@ -23,12 +25,15 @@ public class LoginActivity extends AppCompatActivity {
     TextInputLayout mTilPwd;
     @Bind(R.id.btn_login)
     Button mBtnLogin;
+    /*p*/
+    private LoginContract.LoginPresent mPresent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        mPresent = new LoginPresentImpl();
     }
 
     @OnClick(R.id.btn_login)
@@ -36,6 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         /*登录*/
         String name = mEtName.getText().toString().trim();
         String pwd = mEtPwd.getText().toString().trim();
-
+        mPresent.login(name,pwd);
     }
 }

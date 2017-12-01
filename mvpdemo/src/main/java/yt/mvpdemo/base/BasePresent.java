@@ -5,4 +5,5 @@ package yt.mvpdemo.base;
  */
 
 public interface BasePresent {
+
 }
