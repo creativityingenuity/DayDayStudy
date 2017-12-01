@@ -1,6 +1,5 @@
-# DayDayStudy
-Struggle For Better Future
-
+# DayDayStudy Struggle For Better Future
+`
  《一只孤独的船》
  莱蒙托夫
  一只船孤独地航行在海上,
@@ -13,3 +12,4 @@ Struggle For Better Future
  与已成过往的,
  较之深埋于它内心的,
  皆为微沫.
+`
