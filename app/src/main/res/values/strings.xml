@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Day Day Study</string>
+    <string name="btn_name1">拍照上传</string>
 </resources>
