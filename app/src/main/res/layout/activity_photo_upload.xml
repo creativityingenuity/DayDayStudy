@@ -23,4 +23,13 @@
         tools:layout_editor_absoluteY="103dp"
         android:layout_below="@+id/btn_takephoto"
         android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="73dp"
+        android:layout_toEndOf="@+id/btn_album"
+        app:srcCompat="@mipmap/ic_launcher" />
 </RelativeLayout>

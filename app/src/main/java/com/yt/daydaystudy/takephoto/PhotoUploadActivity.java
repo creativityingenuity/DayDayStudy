@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.yt.daydaystudy.R;
 
@@ -28,6 +30,10 @@ import yt.myutils.PermissionUtils;
  * File Uri 对应的是文件本身的存储路径 - Content Uri 对应的是文件在Content Provider的路径 所以在android 7.0 以上，我们就需要将File Uri转换为 Content Uri。
  * 2、进行裁剪
  * 3、上传服务器前编码转换，用Base64 编码法，将字节数据转化为String类型，上传。服务器端，再通过Base64解码，获得图片
+ * <p>
+ * 有两个问题：
+ * 1.多图选择
+ * 2.裁剪机型适配  https://github.com/Yalantis/uCrop
  */
 public class PhotoUploadActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -38,6 +44,7 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
     private static final int REQUEST_CODE_CHOOSE_ALBUM = 0x004;
     /*裁剪*/
     private static final int REQUEST_CODE_CROP_CODE = 0x001;
+    private ImageView mIv;
 
     public static void startAction(Activity activity) {
         activity.startActivity(new Intent(activity, PhotoUploadActivity.class));
@@ -49,6 +56,7 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_photo_upload);
         findViewById(R.id.btn_takephoto).setOnClickListener(this);
         findViewById(R.id.btn_album).setOnClickListener(this);
+        mIv = (ImageView) findViewById(R.id.imageView);
     }
 
     @Override
@@ -69,6 +77,8 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
             if (cropfile != null) {
                 //获取裁剪后的图片，可以压缩上传 也可用base64将字节数据转化为String
                 //进行上传
+                Bitmap bitmap = BitmapFactory.decodeFile(cropfile.getAbsolutePath());
+                mIv.setImageBitmap(bitmap);
                 LogUtils.i(TAG, "裁剪完成");
             }
         }
@@ -101,9 +111,10 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
         switch (v.getId()) {
             case R.id.btn_takephoto://拍照
                 // 设置图片的输出路径
+                /*#Android系统为了防止传送原图出现OOM，拍照和裁剪都默认返回的是缩略图，为了解决这种问题，我们在启动相机的时候要先设置照片的存储路径，即传递MediaStore.EXTRA_OUTPUT参数，这样拍照完成后我们就可以根据之前设置的路径读取原图了。*/
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 Uri imageUri;
-                photo_file.getParentFile().mkdirs();
+                if (!photo_file.getParentFile().exists()) photo_file.getParentFile().mkdirs();
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     imageUri = FileProvider.getUriForFile(this, "com.yt.fileprovider", photo_file);
