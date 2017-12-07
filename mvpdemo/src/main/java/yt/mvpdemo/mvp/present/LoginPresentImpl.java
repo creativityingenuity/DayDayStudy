@@ -7,4 +7,8 @@ import yt.mvpdemo.mvp.contract.LoginContract;
  */
 
 public class LoginPresentImpl implements LoginContract.LoginPresent {
+    @Override
+    public void login(String name, String pwd) {
+
+    }
 }

@@ -1,4 +1,4 @@
-package yt.mvpdemo.utils;
+package yt.myutils;
 
 import android.os.Environment;
 import android.support.annotation.IntDef;

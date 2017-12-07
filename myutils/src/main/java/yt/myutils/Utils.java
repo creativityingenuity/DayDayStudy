@@ -1,4 +1,4 @@
-package yt.mvpdemo.utils;
+package yt.myutils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

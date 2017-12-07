@@ -1,4 +1,4 @@
-package yt.mvpdemo.utils;
+package yt.myutils;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

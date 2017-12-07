@@ -20,5 +20,7 @@
         android:layout_height="wrap_content"
         android:text="相册"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="103dp" />
+        tools:layout_editor_absoluteY="103dp"
+        android:layout_below="@+id/btn_takephoto"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

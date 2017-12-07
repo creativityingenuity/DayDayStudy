@@ -1,4 +1,4 @@
-package yt.mvpdemo.utils;
+package yt.myutils;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -101,7 +101,7 @@ public final class PermissionUtils {
     /**
      * 获取请求权限中需要授权的权限
      */
-    private static String[] getDeniedPermissions(final Context context, final String[] permissions) {
+    public static String[] getDeniedPermissions(final Context context, final String[] permissions) {
         List<String> deniedPermissions = new ArrayList<>();
         for (String permission : permissions) {
             if (ContextCompat.checkSelfPermission(context, permission) == PackageManager.PERMISSION_DENIED) {

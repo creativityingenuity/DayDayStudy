@@ -31,5 +31,5 @@
         tools:layout_editor_absoluteX="183dp"
         tools:layout_editor_absoluteY="0dp"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/button" />
+        android:layout_toEndOf="@+id/btn_photo_upload" />
 </RelativeLayout>
