@@ -32,7 +32,7 @@ import yt.myutils.PermissionUtils;
  * 3、上传服务器前编码转换，用Base64 编码法，将字节数据转化为String类型，上传。服务器端，再通过Base64解码，获得图片
  * <p>
  * 有两个问题：
- * 1.多图选择
+ * 1.多图选择 https://github.com/zhihu/Matisse
  * 2.裁剪机型适配  https://github.com/Yalantis/uCrop
  */
 public class PhotoUploadActivity extends AppCompatActivity implements View.OnClickListener {
@@ -44,6 +44,12 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
     private static final int REQUEST_CODE_CHOOSE_ALBUM = 0x004;
     /*裁剪*/
     private static final int REQUEST_CODE_CROP_CODE = 0x001;
+    //裁剪图片地址
+    private File cropfile = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + "crop.png");
+    //拍照图片地址
+    private File photo_file = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".png");
+    /*需要授权的权限*/
+    private String[] permissions = {android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private ImageView mIv;
 
     public static void startAction(Activity activity) {
@@ -83,11 +89,6 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
             }
         }
     }
-
-    File cropfile = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + "crop.png");
-    File photo_file = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".png");
-    /*需要授权的权限*/
-    String[] permissions = {android.Manifest.permission.CAMERA, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     @Override
     public void onClick(View v) {
@@ -138,17 +139,14 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
             file.getParentFile().mkdirs();
         }
         Uri imageUri;
-
-        Uri outputUri;
         Intent intent = new Intent("com.android.camera.action.CROP");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             imageUri = FileProvider.getUriForFile(activity, "com.yt.fileprovider", file);
-            outputUri = Uri.fromFile(cropfile);
         } else {
             imageUri = Uri.fromFile(file);
-            outputUri = Uri.fromFile(cropfile);
         }
+        Uri outputUri = Uri.fromFile(cropfile);
         intent.setDataAndType(imageUri, "image/*");
         //发送裁剪信号
         intent.putExtra("crop", "true");
