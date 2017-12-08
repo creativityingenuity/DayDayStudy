@@ -85,7 +85,6 @@ public class RetrofitHelper {
                 .addNetworkInterceptor(new HttpCacheInterceptor())
                 .connectTimeout(15, TimeUnit.SECONDS)//设置超市
                 .readTimeout(20, TimeUnit.SECONDS)
-                .writeTimeout(20, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)//错误重连
                 .cache(cache)
                 .build();
@@ -99,6 +98,7 @@ public class RetrofitHelper {
                 .build();
         apiServers = retrofit.create(APIServers.class);
     }
+
     class HttpCacheInterceptor implements Interceptor {
 
         @Override
