@@ -1,1 +1,3 @@
 include ':app', ':mvpdemo', ':myutils'
+include ':rsademo'
+include ':aesDemo'
