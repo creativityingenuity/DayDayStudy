@@ -2,17 +2,14 @@ package com.apple_half.AesDemo;
 
 import android.util.Base64;
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.Charset;
 import java.security.Key;
 import java.security.Security;
 
-/**
- * Created by apple_half on 15-1-20.
- *
- */
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+
 public class AesUtils {
 
     /**
@@ -32,9 +29,7 @@ public class AesUtils {
     }
 
     /**
-     *
      * 加密数据, 返回字节数组
-     *
      */
     public static byte[] encrypt1(String toEncrypt) throws Exception {
         Key secretKey = new SecretKeySpec(getKey(), KEY_ALGORITHM);
@@ -61,9 +56,7 @@ public class AesUtils {
     }
 
     /**
-     *
      * 加密数据，返回 String 对象
-     *
      */
     public static String encrypt2(String toEncrypt) throws Exception {
         byte[] ivAndEncryptedMessage = encrypt1(toEncrypt);

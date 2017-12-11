@@ -38,12 +38,13 @@ public class MainActivity extends Activity {
         final TextView result1 = (TextView) findViewById(R.id.result1);
         final TextView result2 = (TextView) findViewById(R.id.result2);
 
-        Button btn = (Button)findViewById(R.id.btn);
+        Button btn = (Button) findViewById(R.id.btn);
         btn.setText("加密");
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
+                    //加密
                     String encrypted = AesUtils.encrypt2(dataTv.getText().toString());
                     result1.setText(encrypted);
 
@@ -56,7 +57,6 @@ public class MainActivity extends Activity {
                 }
             }
         });
-
 
 
     }
