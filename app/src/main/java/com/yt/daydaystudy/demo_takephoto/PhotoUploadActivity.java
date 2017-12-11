@@ -1,4 +1,4 @@
-package com.yt.daydaystudy.takephoto;
+package com.yt.daydaystudy.demo_takephoto;
 
 import android.app.Activity;
 import android.content.Intent;

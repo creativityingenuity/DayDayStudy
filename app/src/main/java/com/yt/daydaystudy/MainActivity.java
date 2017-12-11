@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.yt.daydaystudy.takephoto.PhotoUploadActivity;
+import com.yt.daydaystudy.demo_takephoto.PhotoUploadActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
