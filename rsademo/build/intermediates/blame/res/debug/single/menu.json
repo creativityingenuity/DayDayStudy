@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\demo\\DayDayStudy\\rsademo\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "D:\\demo\\DayDayStudy\\rsademo\\src\\main\\res\\menu\\main.xml"
+    },
+    {
         "merged": "E:\\Android_Work\\DayDayStudy\\rsademo\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
         "source": "E:\\Android_Work\\DayDayStudy\\rsademo\\src\\main\\res\\menu\\main.xml"
     }

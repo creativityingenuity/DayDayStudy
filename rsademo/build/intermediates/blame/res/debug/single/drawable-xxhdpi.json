@@ -2,5 +2,9 @@
     {
         "merged": "E:\\Android_Work\\DayDayStudy\\rsademo\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
         "source": "E:\\Android_Work\\DayDayStudy\\rsademo\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\demo\\DayDayStudy\\rsademo\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
+        "source": "D:\\demo\\DayDayStudy\\rsademo\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
     }
 ]
