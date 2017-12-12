@@ -43,6 +43,7 @@ public class RetrofitHelper {
     private final String BASEURL = "";
     private Context mContext;
     private APIServers apiServers;
+    private int maxCacheTime = 60 * 60 * 24 * 28;
 
     private RetrofitHelper() {
         //在构造中初始化Retrofit 保证全局单一实例
@@ -103,6 +104,7 @@ public class RetrofitHelper {
 
         @Override
         public Response intercept(Chain chain) throws IOException {
+            //1.拦截request，在每个请求发出前，进行拦截，然后判断是否有网，若么有网，直接走缓存
             Request request = chain.request();
             if (!NetworkUtils.isConnected()) {
                 request = request.newBuilder()
@@ -113,15 +115,16 @@ public class RetrofitHelper {
 
             Response originalResponse = chain.proceed(request);
             if (NetworkUtils.isConnected()) {
-                //有网的时候读接口上的@Headers里的配置，可以在这里进行统一的设置
-                String cacheControl = request.cacheControl().toString();
+                //有网时 设置缓存超时时间0小时
                 return originalResponse.newBuilder()
-                        .header("Cache-Control", cacheControl)
-                        .removeHeader("Pragma")
+                        //max-age 控制缓存的最大生命时间
+                        .header("Cache-Control", "public, max-age=" + 0)
+                        .removeHeader("Pragma")// 清除头信息，因为服务器如果不支持，会返回一些干扰信息，不清除下面无法生效
                         .build();
             } else {
+                //无网时 设置超时为4周
                 return originalResponse.newBuilder()
-                        .header("Cache-Control", "public, only-if-cached, max-stale=2419200")
+                        .header("Cache-Control", "public, only-if-cached, max-stale=" + maxCacheTime)
                         .removeHeader("Pragma")
                         .build();
             }
