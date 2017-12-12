@@ -1,7 +1,5 @@
 package yt.mvpdemo.net;
 
-import android.content.Context;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -21,6 +19,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import yt.mvpdemo.MVPApplication;
 import yt.myutils.LogUtils;
 import yt.myutils.NetworkUtils;
 
@@ -39,11 +38,9 @@ import yt.myutils.NetworkUtils;
 public class RetrofitHelper {
     /*单例*/
     private static RetrofitHelper instance;
-    /*主机host*/
-    private final String BASEURL = "";
-    private Context mContext;
-    private APIServers apiServers;
+    private static APIServers apiServers;
     private int maxCacheTime = 60 * 60 * 24 * 28;
+    private static Retrofit retrofit;
 
     private RetrofitHelper() {
         //在构造中初始化Retrofit 保证全局单一实例
@@ -59,6 +56,11 @@ public class RetrofitHelper {
             }
         }
         return instance;
+    }
+
+    public static APIServers getApiServers() {
+        if (apiServers == null) apiServers = retrofit.create(APIServers.class);
+        return apiServers;
     }
 
     /**
@@ -80,7 +82,7 @@ public class RetrofitHelper {
         });
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         //缓存 50M
-        Cache cache = new Cache(new File(mContext.getExternalCacheDir(), "httpCache"), 1024 * 1024 * 50);
+        Cache cache = new Cache(new File(MVPApplication.getInstance().getExternalCacheDir(), "httpCache"), 1024 * 1024 * 50);
         OkHttpClient okClient = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .addNetworkInterceptor(new HttpCacheInterceptor())
@@ -91,7 +93,7 @@ public class RetrofitHelper {
                 .build();
 
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").serializeNulls().create();
-        Retrofit retrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(APIServers.BASEURL)
                 .client(okClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
