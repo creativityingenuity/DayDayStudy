@@ -13,7 +13,7 @@ public abstract class BaseActivity extends RxAppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
+//        setContentView(getLayoutId());
         init(savedInstanceState);
     }
 
