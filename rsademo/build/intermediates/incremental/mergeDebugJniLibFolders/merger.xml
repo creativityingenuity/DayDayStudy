@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\demo\DayDayStudy\rsademo\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="D:\demo\DayDayStudy\rsademo\src\debug\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\Android_Work\DayDayStudy\rsademo\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="E:\Android_Work\DayDayStudy\rsademo\src\debug\jniLibs"/></dataSet></merger>
