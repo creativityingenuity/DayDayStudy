@@ -1,9 +1,5 @@
 [
     {
-        "merged": "E:\\Android_Work\\DayDayStudy\\rsademo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
-        "source": "E:\\Android_Work\\DayDayStudy\\rsademo\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
         "merged": "D:\\demo\\DayDayStudy\\rsademo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
         "source": "D:\\demo\\DayDayStudy\\rsademo\\src\\main\\res\\layout\\activity_main.xml"
     }

@@ -10,16 +10,16 @@ import yt.mvpdemo.base.BaseView;
  */
 
 public interface LoginContract {
-    interface LoginView extends BaseView{
+    interface View extends BaseView{
 
     }
 
-    interface LoginPresent extends BasePresent{
+    interface Present extends BasePresent{
         /*登录*/
         void login(String name, String pwd);
     }
 
-    interface LoginModule extends BaseModel{
+    interface Module extends BaseModel{
 
     }
 }
