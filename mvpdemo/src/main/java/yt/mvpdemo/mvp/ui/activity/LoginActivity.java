@@ -7,15 +7,10 @@ import android.widget.EditText;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import yt.mvpdemo.R;
 import yt.mvpdemo.base.BaseActivity;
-import yt.mvpdemo.base.BaseResponse;
 import yt.mvpdemo.mvp.contract.LoginContract;
-import yt.mvpdemo.mvp.module.entity.LoginEntity;
-import yt.mvpdemo.net.DefaultObserver;
-import yt.mvpdemo.net.NetHelper;
+import yt.mvpdemo.mvp.present.LoginPresenterImpl;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View{
 
@@ -29,7 +24,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
     TextInputLayout mTilPwd;
     @Bind(R.id.btn_login)
     Button mBtnLogin;
-
+    private LoginContract.Presenter mPresenter;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login;
@@ -37,25 +32,19 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
 
     @Override
     protected void init(Bundle savedInstanceState) {
-
+        mPresenter = new LoginPresenterImpl(this);
     }
 
     @OnClick(R.id.btn_login)
     public void onViewClicked() {
-        /*登录*/
         String name = mEtName.getText().toString().trim();
         String pwd = mEtPwd.getText().toString().trim();
+        /*登录*/
+        mPresenter.loginRequest(name,pwd);
+    }
 
-        NetHelper.getApiServers()
-                .login("48ecf289b4a3f977bb33e2d7eec91843","1512104887277","15555555555","123456")
-                .compose(this.<BaseResponse<LoginEntity>>bindToLifecycle())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<BaseResponse<LoginEntity>>() {
-                    @Override
-                    protected void onSuccess(BaseResponse<LoginEntity> response) {
+    @Override
+    public void returnLogin(String name, String pwd) {
 
-                    }
-                });
     }
 }

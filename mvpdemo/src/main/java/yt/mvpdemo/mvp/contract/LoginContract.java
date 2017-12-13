@@ -1,7 +1,7 @@
 package yt.mvpdemo.mvp.contract;
 
 import yt.mvpdemo.base.BaseModel;
-import yt.mvpdemo.base.BasePresent;
+import yt.mvpdemo.base.BasePresenter;
 import yt.mvpdemo.base.BaseView;
 
 /**
@@ -11,15 +11,16 @@ import yt.mvpdemo.base.BaseView;
 
 public interface LoginContract {
     interface View extends BaseView{
+        //登陆返回的数据
+        void returnLogin(String name,String pwd);
+    }
+
+    interface Model extends BaseModel{
 
     }
 
-    interface Present extends BasePresent{
-        /*登录*/
-        void login(String name, String pwd);
-    }
-
-    interface Module extends BaseModel{
-
+    interface Presenter extends BasePresenter<View,Model> {
+        //发起登陆请求
+        void loginRequest(String name,String pwd);
     }
 }
