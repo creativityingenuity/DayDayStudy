@@ -10,9 +10,11 @@ import butterknife.OnClick;
 import yt.mvpdemo.R;
 import yt.mvpdemo.base.BaseActivity;
 import yt.mvpdemo.mvp.contract.LoginContract;
-import yt.mvpdemo.mvp.present.LoginPresenterImpl;
+import yt.mvpdemo.mvp.model.entity.LoginEntity;
+import yt.mvpdemo.mvp.model.entity.LoginModel;
+import yt.mvpdemo.mvp.present.LoginPresenter;
 
-public class LoginActivity extends BaseActivity implements LoginContract.View{
+public class LoginActivity extends BaseActivity<LoginModel,LoginPresenter> implements LoginContract.View{
 
     @Bind(R.id.et_name)
     EditText mEtName;
@@ -24,7 +26,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
     TextInputLayout mTilPwd;
     @Bind(R.id.btn_login)
     Button mBtnLogin;
-    private LoginContract.Presenter mPresenter;
+
+    @Override
+    protected void initPresenter() {
+        mPresenter.attachVM(this,mModel);
+    }
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_login;
@@ -32,19 +39,19 @@ public class LoginActivity extends BaseActivity implements LoginContract.View{
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        mPresenter = new LoginPresenterImpl(this);
+
     }
 
     @OnClick(R.id.btn_login)
     public void onViewClicked() {
         String name = mEtName.getText().toString().trim();
         String pwd = mEtPwd.getText().toString().trim();
-        /*登录*/
+        //登录
         mPresenter.loginRequest(name,pwd);
     }
 
     @Override
-    public void returnLogin(String name, String pwd) {
+    public void returnLogin(LoginEntity loginEntity) {
 
     }
 }

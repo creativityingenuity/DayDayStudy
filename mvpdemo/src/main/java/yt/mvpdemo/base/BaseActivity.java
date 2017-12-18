@@ -9,22 +9,47 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
 import yt.mvpdemo.commen.AppManager;
+import yt.mvpdemo.commen.RxManager;
 import yt.mvpdemo.commen.StatusBarCompat;
 
 /**
  * Created by ${zhangyuanchao} on 2017/11/30.
  */
 
-public abstract class BaseActivity extends RxAppCompatActivity {
+public abstract class BaseActivity<M extends BaseModel,P extends BasePresenter> extends RxAppCompatActivity {
+    public P mPresenter;
+    public M mModel;
+    public RxManager mRxManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         doBeforeSetcontentView();
         setContentView(getLayoutId());
+        mRxManager = new RxManager();
+        mModel = AppManager.getAppManager().getT(this, 0);
+        mPresenter = AppManager.getAppManager().getT(this, 1);
         ButterKnife.bind(this);
+        initPresenter();
         init(savedInstanceState);
     }
 
+    /**
+     * 初始化presenter
+     */
+    protected abstract void initPresenter();
+    /**
+     * 获取布局ID
+     *
+     * @return
+     */
+    protected abstract int getLayoutId();
+
+    /**
+     * 初始化
+     *
+     * @param savedInstanceState
+     */
+    protected abstract void init(Bundle savedInstanceState);
     /**
      * 设置layout前配置
      */
@@ -60,23 +85,12 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         StatusBarCompat.translucentStatusBar(this);
     }
 
-    /**
-     * 获取布局ID
-     *
-     * @return
-     */
-    protected abstract int getLayoutId();
-
-    /**
-     * 初始化
-     *
-     * @param savedInstanceState
-     */
-    protected abstract void init(Bundle savedInstanceState);
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if(mPresenter!=null){
+            mPresenter.onDetachVM();
+        }
         AppManager.getAppManager().finishActivity(this);
 
     }

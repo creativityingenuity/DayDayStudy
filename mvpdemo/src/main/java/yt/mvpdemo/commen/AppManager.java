@@ -173,7 +173,15 @@ public class AppManager {
         }
     }
 
-    public static <T> T getT(Object o, int i) {
+    /**
+     * 获取泛型的实际Class对象
+     *
+     * @param o
+     * @param i
+     * @param <T>
+     * @return
+     */
+    public <T> T getT(Object o, int i) {
         try {
             return ((Class<T>) ((ParameterizedType) (o.getClass()
                     .getGenericSuperclass())).getActualTypeArguments()[i])

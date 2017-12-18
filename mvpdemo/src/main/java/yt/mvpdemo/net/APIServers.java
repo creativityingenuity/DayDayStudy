@@ -5,7 +5,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 import yt.mvpdemo.base.BaseResponse;
-import yt.mvpdemo.mvp.module.entity.LoginEntity;
+import yt.mvpdemo.mvp.model.entity.LoginEntity;
 
 /**
  * Created by ${zhangyuanchao} on 2017/12/1.
