@@ -1,9 +1,10 @@
-package yt.mvpdemo.mvp.model.entity;
+package yt.mvpdemo.mvp.model;
 
 import io.reactivex.Observable;
 import yt.mvpdemo.base.BaseResponse;
 import yt.mvpdemo.commen.RxManager;
 import yt.mvpdemo.mvp.contract.LoginContract;
+import yt.mvpdemo.mvp.model.entity.LoginEntity;
 import yt.mvpdemo.net.NetHelper;
 
 /**

@@ -11,7 +11,7 @@ import yt.mvpdemo.R;
 import yt.mvpdemo.base.BaseActivity;
 import yt.mvpdemo.mvp.contract.LoginContract;
 import yt.mvpdemo.mvp.model.entity.LoginEntity;
-import yt.mvpdemo.mvp.model.entity.LoginModel;
+import yt.mvpdemo.mvp.model.LoginModel;
 import yt.mvpdemo.mvp.present.LoginPresenter;
 
 public class LoginActivity extends BaseActivity<LoginModel,LoginPresenter> implements LoginContract.View{
@@ -47,6 +47,6 @@ public class LoginActivity extends BaseActivity<LoginModel,LoginPresenter> imple
 
     @Override
     public void returnLogin(LoginEntity loginEntity) {
-
+        System.out.println(loginEntity.getName() + "xxxxxxxxxxxxxxxxx");
     }
 }

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "E:\\Android_Work\\DayDayStudy\\aesDemo\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_launcher.png",
+        "source": "E:\\Android_Work\\DayDayStudy\\aesDemo\\src\\main\\res\\drawable-ldpi\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\demo\\DayDayStudy\\aesDemo\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi\\ic_launcher.png",
         "source": "D:\\demo\\DayDayStudy\\aesDemo\\src\\main\\res\\drawable-ldpi\\ic_launcher.png"
     }

@@ -14,6 +14,7 @@ import java.net.UnknownHostException;
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
 import retrofit2.HttpException;
 import yt.mvpdemo.R;
 import yt.mvpdemo.base.BaseResponse;
@@ -24,24 +25,10 @@ import yt.myutils.ToastUtils;
  * Created by ${zhangyuanchao} on 2017/12/11.
  * 处理服务器数据响应
  */
-
-public abstract class DefaultObserver<T extends BaseResponse> implements Observer<T> {
-    private RxManager mRxManager;
-    public DefaultObserver() {
-    }
-    public DefaultObserver(RxManager mRxManager) {
-        this.mRxManager = mRxManager;
-    }
-
-    @Override
-    public void onSubscribe(@NonNull Disposable d) {
-        if(mRxManager!=null) mRxManager.register(d);
-    }
+public abstract class DefaultObserver<T extends BaseResponse> extends DisposableObserver<T> {
 
     @Override
     public void onNext(@NonNull T response) {
-        //如果取消了订阅 则不需要处理后面
-        if(mRxManager.isUnRegister()) return;
         if (response.isSuccess()) {
             onSuccess(response);
         } else {

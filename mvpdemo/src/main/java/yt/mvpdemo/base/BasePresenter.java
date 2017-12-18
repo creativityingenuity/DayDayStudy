@@ -12,7 +12,7 @@ public abstract class BasePresenter<V, M> {
     public Context mContext;
     public M mModel;
     public V mView;
-    //Rxjava+{组件 生命周期处理
+    //Rxjava+组件 生命周期处理
     public RxManager mRxManage = new RxManager();
 
     /**

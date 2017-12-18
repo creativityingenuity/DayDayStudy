@@ -117,6 +117,5 @@ public abstract class BaseActivity<M extends BaseModel, P extends BasePresenter>
             mPresenter.onDetachVM();
         }
         AppManager.getAppManager().finishActivity(this);
-
     }
 }
