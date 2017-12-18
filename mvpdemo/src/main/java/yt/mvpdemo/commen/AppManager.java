@@ -9,14 +9,13 @@ import java.lang.reflect.ParameterizedType;
 import java.util.Stack;
 
 /**
- * activity管理
+ * AppManager 管理Activity栈
  */
 public class AppManager {
     private static Stack<Activity> activityStack;
     private volatile static AppManager instance;
 
     private AppManager() {
-
     }
 
     public static AppManager getAppManager() {

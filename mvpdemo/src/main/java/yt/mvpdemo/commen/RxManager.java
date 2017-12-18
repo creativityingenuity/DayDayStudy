@@ -1,65 +1,44 @@
 package yt.mvpdemo.commen;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
- * Name: LGZ
- * Time: 2017/4/25.
- * Dec:
- * 用于管理单个presenter的RxBus的事件和Rxjava相关代码的生命周期处理
+ * 管理rxjava的生命周期-订阅-取消订阅
  */
 
 public class RxManager {
-    public RxBus mRxBus = RxBus.getInstance();
-    //管理rxbus订阅
-    private Map<String, Observable<?>> mObservables = new HashMap<>();
-    /*管理Observables 和 Subscribers订阅*/
-    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+    /*管理Subscribers订阅*/
+    private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
-    /**
-     * RxBus注入监听
-     * @param eventName
-     * @param action1
-     */
-    public <T>void on(String eventName, Action1<T> action1) {
-        Observable<T> mObservable = mRxBus.register(eventName);
-        mObservables.put(eventName, mObservable);
-        /*订阅管理*/
-        mCompositeSubscription.add(mObservable.observeOn(AndroidSchedulers.mainThread())
-                .subscribe(action1, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        throwable.printStackTrace();
-                    }
-                }));
+    public void register(Disposable d) {
+        mCompositeDisposable.add(d);
+    }
+
+    public void unSubscribe() {
+        mCompositeDisposable.dispose();// 取消订阅
     }
 
     /**
-     * 单纯的Observables 和 Subscribers管理
-     * @param m
+     * 统一线程处理
+     * <p>
+     * 发布事件io线程，接收事件主线程
      */
-    public void add(Subscription m) {
-        /*订阅管理*/
-        mCompositeSubscription.add(m);
+    public static <T> ObservableTransformer<T, T> rxSchedulerHelper() {//compose处理线程
+        return new ObservableTransformer<T, T>() {
+
+            @Override
+            public ObservableSource<T> apply(Observable<T> upstream) {
+                return upstream.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread());
+            }
+        };
     }
-    /**
-     * 单个presenter生命周期结束，取消订阅和所有rxbus观察
-     */
-    public void clear() {
-        mCompositeSubscription.unsubscribe();// 取消所有订阅
-        for (Map.Entry<String, Observable<?>> entry : mObservables.entrySet()) {
-            mRxBus.unregister(entry.getKey(), entry.getValue());// 移除rxbus观察
-        }
-    }
-    //发送rxbus
-    public void post(Object tag, Object content) {
-        mRxBus.post(tag, content);
-    }
+
+
 }

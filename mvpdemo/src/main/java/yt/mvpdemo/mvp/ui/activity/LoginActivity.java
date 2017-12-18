@@ -28,11 +28,6 @@ public class LoginActivity extends BaseActivity<LoginModel,LoginPresenter> imple
     Button mBtnLogin;
 
     @Override
-    protected void initPresenter() {
-        mPresenter.attachVM(this,mModel);
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.activity_login;
     }

@@ -57,9 +57,9 @@ public abstract class DefaultObserver<T extends BaseResponse> implements Observe
      */
     protected void onFail(T response) {
         String msg = response.getMsg();
-        if(TextUtils.isEmpty(msg)){
+        if (TextUtils.isEmpty(msg)) {
             ToastUtils.showLong(R.string.error_server);
-        }else {
+        } else {
             ToastUtils.showLong(msg);
         }
     }

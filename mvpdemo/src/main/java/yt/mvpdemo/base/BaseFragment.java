@@ -2,17 +2,16 @@ package yt.mvpdemo.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.trello.rxlifecycle2.components.support.RxFragment;
 
 /**
  * Created by ${zhangyuanchao} on 2017/12/12.
  */
 
-public abstract class BaseFragment extends RxFragment {
+public abstract class BaseFragment extends Fragment {
     public View rootView;
     public LayoutInflater inflater;
 

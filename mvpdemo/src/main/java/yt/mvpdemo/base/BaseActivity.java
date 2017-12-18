@@ -3,10 +3,9 @@ package yt.mvpdemo.base;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
-
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
-
+import android.view.inputmethod.InputMethodManager;
 import butterknife.ButterKnife;
 import yt.mvpdemo.commen.AppManager;
 import yt.mvpdemo.commen.RxManager;
@@ -16,10 +15,13 @@ import yt.mvpdemo.commen.StatusBarCompat;
  * Created by ${zhangyuanchao} on 2017/11/30.
  */
 
-public abstract class BaseActivity<M extends BaseModel,P extends BasePresenter> extends RxAppCompatActivity {
+public abstract class BaseActivity<M extends BaseModel, P extends BasePresenter> extends AppCompatActivity{
+    /*具体P由子类确定*/
     public P mPresenter;
+    /*具体M由子类确定*/
     public M mModel;
     public RxManager mRxManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +38,12 @@ public abstract class BaseActivity<M extends BaseModel,P extends BasePresenter> 
     /**
      * 初始化presenter
      */
-    protected abstract void initPresenter();
+    protected void initPresenter() {
+        if (mPresenter != null && mModel != null) {
+            mPresenter.attachVM(this, mModel);
+        }
+    }
+
     /**
      * 获取布局ID
      *
@@ -50,6 +57,7 @@ public abstract class BaseActivity<M extends BaseModel,P extends BasePresenter> 
      * @param savedInstanceState
      */
     protected abstract void init(Bundle savedInstanceState);
+
     /**
      * 设置layout前配置
      */
@@ -85,10 +93,27 @@ public abstract class BaseActivity<M extends BaseModel,P extends BasePresenter> 
         StatusBarCompat.translucentStatusBar(this);
     }
 
+    /**
+     * 隐藏键盘
+     *
+     * @return 隐藏键盘结果
+     * <p>
+     * true:隐藏成功
+     * <p>
+     * false:隐藏失败
+     */
+    protected boolean hiddenKeyboard() {
+        //点击空白位置 隐藏软键盘
+        InputMethodManager mInputMethodManager = (InputMethodManager) getSystemService
+                (INPUT_METHOD_SERVICE);
+        return mInputMethodManager.hideSoftInputFromWindow(this
+                .getCurrentFocus().getWindowToken(), 0);
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mPresenter!=null){
+        if (mPresenter != null) {
             mPresenter.onDetachVM();
         }
         AppManager.getAppManager().finishActivity(this);

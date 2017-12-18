@@ -17,18 +17,14 @@ public class LoginPresenter extends LoginContract.Presenter {
 
     @Override
     public void loginRequest(String name, String pwd) {
-        mRxManage.add();
-        NetHelper.getApiServers()
-                .login("48ecf289b4a3f977bb33e2d7eec91843","1512104887277","15555555555","123456")
-                .compose(loginActivity.<BaseResponse<LoginEntity>>bindToLifecycle())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+        mRxManage.register(mModel.login(name, pwd)
                 .subscribe(new DefaultObserver<BaseResponse<LoginEntity>>() {
                     @Override
                     protected void onSuccess(BaseResponse<LoginEntity> response) {
+//                        mView.returnLogin(response.getData());
                         LoginEntity data = response.getData();
-                        System.out.println(data.getName()+"xxxxxxxxxxxxxxxxx");
+                        System.out.println(data.getName() + "xxxxxxxxxxxxxxxxx");
                     }
-                });
+                }));
     }
 }

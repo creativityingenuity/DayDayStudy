@@ -28,19 +28,20 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-
-    compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjava2Version"
+    // Retrofit
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit2Version"
     compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofit2Version"
     compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofit2Version"
-    compile "com.trello.rxlifecycle2:rxlifecycle:$rootProject.ext.rxlifecycle"
-    compile "com.trello.rxlifecycle2:rxlifecycle-components:$rootProject.ext.rxlifecycle"
+    compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+
+    // RxJava
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxjava2Version"
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
     compile project(':myutils')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.android.support:support-v4:26.+'
