@@ -1,5 +1,6 @@
 package yt.mvpdemo.mvp.present;
 
+import io.reactivex.observers.DisposableObserver;
 import yt.mvpdemo.base.BaseResponse;
 import yt.mvpdemo.mvp.contract.LoginContract;
 import yt.mvpdemo.mvp.model.entity.LoginEntity;
@@ -13,6 +14,23 @@ public class LoginPresenter extends LoginContract.Presenter {
 
     @Override
     public void loginRequest(String name, String pwd) {
+        //Observable<BaseResponse<LoginEntity>>
+        mRxManage.register(mModel.login(name,pwd).subscribeWith(new DisposableObserver<BaseResponse<LoginEntity>>() {
+            @Override
+            public void onNext(BaseResponse<LoginEntity> loginEntityBaseResponse) {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        }));
         mModel.login(name, pwd)
                 .subscribe(new DefaultObserver<BaseResponse<LoginEntity>>(mRxManage) {
                     @Override
