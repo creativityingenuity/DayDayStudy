@@ -21,7 +21,16 @@ public class RxManager {
     }
 
     public void unSubscribe() {
-        mCompositeDisposable.dispose();// 取消订阅
+        mCompositeDisposable.dispose();// 取消所有订阅
+    }
+
+    /**
+     * 判断是否取消了订阅
+     *
+     * @return
+     */
+    public boolean isUnRegister() {
+        return mCompositeDisposable.isDisposed();
     }
 
     /**

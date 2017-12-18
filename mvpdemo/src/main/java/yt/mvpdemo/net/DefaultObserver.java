@@ -17,6 +17,7 @@ import io.reactivex.disposables.Disposable;
 import retrofit2.HttpException;
 import yt.mvpdemo.R;
 import yt.mvpdemo.base.BaseResponse;
+import yt.mvpdemo.commen.RxManager;
 import yt.myutils.ToastUtils;
 
 /**
@@ -25,14 +26,22 @@ import yt.myutils.ToastUtils;
  */
 
 public abstract class DefaultObserver<T extends BaseResponse> implements Observer<T> {
+    private RxManager mRxManager;
+    public DefaultObserver() {
+    }
+    public DefaultObserver(RxManager mRxManager) {
+        this.mRxManager = mRxManager;
+    }
 
     @Override
     public void onSubscribe(@NonNull Disposable d) {
-
+        if(mRxManager!=null) mRxManager.register(d);
     }
 
     @Override
     public void onNext(@NonNull T response) {
+        //如果取消了订阅 则不需要处理后面
+        if(mRxManager.isUnRegister()) return;
         if (response.isSuccess()) {
             onSuccess(response);
         } else {

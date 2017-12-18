@@ -16,6 +16,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import yt.mvpdemo.R;
@@ -87,6 +88,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void test1() {
 //        action  简化整体流程  2中进行了修改 等会弄
+        Observable.just("xxx").subscribe(new Consumer<String>() {
+            @Override
+            public void accept(@NonNull String s) throws Exception {
+
+            }
+        });
     }
 
     private void test() {
