@@ -20,14 +20,12 @@ public abstract class BaseActivity<M extends BaseModel, P extends BasePresenter>
     public P mPresenter;
     /*具体M由子类确定*/
     public M mModel;
-    public RxManager mRxManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         doBeforeSetcontentView();
         setContentView(getLayoutId());
-        mRxManager = new RxManager();
         mModel = AppManager.getAppManager().getT(this, 0);
         mPresenter = AppManager.getAppManager().getT(this, 1);
         ButterKnife.bind(this);
