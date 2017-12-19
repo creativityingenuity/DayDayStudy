@@ -20,6 +20,8 @@ public interface LoginContract {
 
     interface Model extends BaseModel{
         Observable<BaseResponse<LoginEntity>> login(String name, String pwd);
+        //eg:
+        //Observable<BaseResponse<List<LoginEntity>>> login1(String name, String pwd);
     }
 
     abstract class Presenter extends BasePresenter<View,Model> {

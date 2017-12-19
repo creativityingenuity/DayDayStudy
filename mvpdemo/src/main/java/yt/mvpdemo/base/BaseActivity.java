@@ -6,9 +6,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
+
 import butterknife.ButterKnife;
 import yt.mvpdemo.commen.AppManager;
-import yt.mvpdemo.commen.RxManager;
 import yt.mvpdemo.commen.StatusBarCompat;
 
 /**
@@ -17,9 +17,9 @@ import yt.mvpdemo.commen.StatusBarCompat;
 
 public abstract class BaseActivity<M extends BaseModel, P extends BasePresenter> extends AppCompatActivity{
     /*具体P由子类确定*/
-    public P mPresenter;
+    protected P mPresenter;
     /*具体M由子类确定*/
-    public M mModel;
+    private M mModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

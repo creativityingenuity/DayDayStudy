@@ -2,6 +2,8 @@ package yt.mvpdemo;
 
 import android.app.Application;
 
+import com.squareup.leakcanary.LeakCanary;
+
 import yt.myutils.Utils;
 
 /**
@@ -16,6 +18,12 @@ public class MVPApplication extends Application {
         super.onCreate();
         instance = this;
         Utils.init(this);
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
     }
 
     public static Application getInstance(){

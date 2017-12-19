@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import yt.mvpdemo.commen.AppManager;
-import yt.mvpdemo.commen.RxManager;
 
 /**
  * Created by ${zhangyuanchao} on 2017/12/12.
@@ -17,8 +16,8 @@ import yt.mvpdemo.commen.RxManager;
 public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel> extends Fragment {
     public View rootView;
     public LayoutInflater inflater;
-    public P mPresenter;
-    public M mModel;
+    protected P mPresenter;
+    private M mModel;
 
     @Nullable
     @Override

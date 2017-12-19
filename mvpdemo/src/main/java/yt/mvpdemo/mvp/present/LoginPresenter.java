@@ -1,6 +1,5 @@
 package yt.mvpdemo.mvp.present;
 
-import io.reactivex.observers.DisposableObserver;
 import yt.mvpdemo.base.BaseResponse;
 import yt.mvpdemo.mvp.contract.LoginContract;
 import yt.mvpdemo.mvp.model.entity.LoginEntity;

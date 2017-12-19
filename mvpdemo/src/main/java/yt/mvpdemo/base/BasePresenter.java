@@ -8,7 +8,7 @@ import yt.mvpdemo.commen.RxManager;
  * Created by ${zhangyuanchao} on 2017/11/30.
  */
 
-public abstract class BasePresenter<V, M> {
+public abstract class BasePresenter<V , M> {
     public Context mContext;
     public M mModel;
     public V mView;

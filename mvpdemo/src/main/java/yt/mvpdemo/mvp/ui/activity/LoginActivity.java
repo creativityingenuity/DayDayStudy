@@ -47,6 +47,6 @@ public class LoginActivity extends BaseActivity<LoginModel,LoginPresenter> imple
 
     @Override
     public void returnLogin(LoginEntity loginEntity) {
-        System.out.println(loginEntity.getName() + "xxxxxxxxxxxxxxxxx");
+        System.out.println(loginEntity.getName());
     }
 }

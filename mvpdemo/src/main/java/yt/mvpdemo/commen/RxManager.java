@@ -1,6 +1,12 @@
 package yt.mvpdemo.commen;
 
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -26,7 +32,6 @@ public class RxManager {
 
     /**
      * 判断是否取消了订阅
-     *
      * @return
      */
     public boolean isUnRegister() {
@@ -48,6 +53,44 @@ public class RxManager {
             }
         };
     }
+    /**
+     * 生成Flowable
+     *
+     * @param t
+     * @return Flowable
+     */
+    public static <T> Flowable<T> createFlowable(final T t) {
+        return Flowable.create(new FlowableOnSubscribe<T>() {
+            @Override
+            public void subscribe(FlowableEmitter<T> emitter) throws Exception {
+                try {
+                    emitter.onNext(t);
+                    emitter.onComplete();
+                } catch (Exception e) {
+                    emitter.onError(e);
+                }
+            }
+        }, BackpressureStrategy.BUFFER);
+    }
 
+    /**
+     * 生成Observable
+     *
+     * @param t
+     * @return Flowable
+     */
+    public static <T> Observable<T> createObservable(final T t) {
+        return Observable.create(new ObservableOnSubscribe<T>() {
+            @Override
+            public void subscribe(ObservableEmitter<T> emitter) throws Exception {
+                try {
+                    emitter.onNext(t);
+                    emitter.onComplete();
+                } catch (Exception e) {
+                    emitter.onError(e);
+                }
+            }
+        });
+    }
 
 }
