@@ -1,5 +1,6 @@
 package yt.mvpdemo.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,12 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
     public LayoutInflater inflater;
     protected P mPresenter;
     private M mModel;
+    private Activity mActivity;
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.mActivity = activity;
+    }
 
     @Nullable
     @Override

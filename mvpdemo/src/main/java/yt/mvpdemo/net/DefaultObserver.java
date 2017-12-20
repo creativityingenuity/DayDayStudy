@@ -11,14 +11,11 @@ import java.io.InterruptedIOException;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
 
-import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 import retrofit2.HttpException;
 import yt.mvpdemo.R;
 import yt.mvpdemo.base.BaseResponse;
-import yt.mvpdemo.commen.RxManager;
 import yt.myutils.ToastUtils;
 
 /**
