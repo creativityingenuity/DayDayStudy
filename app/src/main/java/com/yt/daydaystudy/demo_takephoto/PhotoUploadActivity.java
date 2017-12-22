@@ -1,6 +1,8 @@
 package com.yt.daydaystudy.demo_takephoto;
 
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -74,13 +76,9 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
             LogUtils.i(TAG, "拍照完成");
         } else if (requestCode == REQUEST_CODE_CHOOSE_ALBUM) {
             if (data == null) return;
-            String[] pojo = {MediaStore.MediaColumns.DATA};
-            Cursor cursor = getContentResolver().query(data.getData(), pojo, null, null, null);
-            int columnIndex = cursor.getColumnIndexOrThrow(pojo[0]);
-            cursor.moveToFirst();
-            String picPath = cursor.getString(columnIndex);
+            String absolutePath = getAbsolutePath(PhotoUploadActivity.this, data.getData());
             LogUtils.i(TAG, "相册选取成功");
-            doCrop(picPath, this);
+            doCrop(absolutePath, this);
         } else if (requestCode == REQUEST_CODE_CROP_CODE) {
             if (cropfile != null) {
                 //获取裁剪后的图片，可以压缩上传 也可用base64将字节数据转化为String
@@ -90,6 +88,30 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
                 LogUtils.i(TAG, "裁剪完成");
             }
         }
+    }
+
+    public String getAbsolutePath(final Context context, final Uri uri) {
+        if (null == uri) return null;
+        final String scheme = uri.getScheme();
+        String data = null;
+        if (scheme == null)
+            data = uri.getPath();
+        else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
+            data = uri.getPath();
+        } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
+            Cursor cursor = context.getContentResolver().query(uri,
+                    new String[]{MediaStore.Images.ImageColumns.DATA}, null, null, null);
+            if (null != cursor) {
+                if (cursor.moveToFirst()) {
+                    int index = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+                    if (index > -1) {
+                        data = cursor.getString(index);
+                    }
+                }
+                cursor.close();
+            }
+        }
+        return data;
     }
 
     @Override
