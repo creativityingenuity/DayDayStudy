@@ -76,9 +76,13 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
             LogUtils.i(TAG, "拍照完成");
         } else if (requestCode == REQUEST_CODE_CHOOSE_ALBUM) {
             if (data == null) return;
-            String absolutePath = getAbsolutePath(PhotoUploadActivity.this, data.getData());
-            LogUtils.i(TAG, "相册选取成功");
-            doCrop(absolutePath, this);
+            try {
+                String absolutePath = getAbsolutePath(PhotoUploadActivity.this, data.getData());
+                LogUtils.i(TAG, "相册选取成功");
+                doCrop(absolutePath, this);
+            } catch (Exception e) {
+            }
+
         } else if (requestCode == REQUEST_CODE_CROP_CODE) {
             if (cropfile != null) {
                 //获取裁剪后的图片，可以压缩上传 也可用base64将字节数据转化为String
