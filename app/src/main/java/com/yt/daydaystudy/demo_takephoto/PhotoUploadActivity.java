@@ -73,6 +73,7 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
             doCrop(photo_file.getAbsolutePath(), this);
             LogUtils.i(TAG, "拍照完成");
         } else if (requestCode == REQUEST_CODE_CHOOSE_ALBUM) {
+            if (data == null) return;
             String[] pojo = {MediaStore.MediaColumns.DATA};
             Cursor cursor = getContentResolver().query(data.getData(), pojo, null, null, null);
             int columnIndex = cursor.getColumnIndexOrThrow(pojo[0]);
