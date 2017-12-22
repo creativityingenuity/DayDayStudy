@@ -16,6 +16,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.yt.daydaystudy.BuildConfig;
 import com.yt.daydaystudy.R;
 
 import java.io.ByteArrayOutputStream;
@@ -118,7 +119,7 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
                 if (!photo_file.getParentFile().exists()) photo_file.getParentFile().mkdirs();
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    imageUri = FileProvider.getUriForFile(this, "com.yt.fileprovider", photo_file);
+                    imageUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", photo_file);
                 } else {
                     imageUri = Uri.fromFile(photo_file);
                 }
@@ -142,7 +143,7 @@ public class PhotoUploadActivity extends AppCompatActivity implements View.OnCli
         Intent intent = new Intent("com.android.camera.action.CROP");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            imageUri = FileProvider.getUriForFile(activity, "com.yt.fileprovider", file);
+            imageUri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".provider", file);
         } else {
             imageUri = Uri.fromFile(file);
         }
