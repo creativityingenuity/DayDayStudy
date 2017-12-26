@@ -2,14 +2,12 @@ package yt.mvpdemo.base;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 
 import butterknife.ButterKnife;
 import yt.mvpdemo.commen.AppManager;
-import yt.mvpdemo.commen.StatusBarCompat;
 
 /**
  * Created by ${zhangyuanchao} on 2017/11/30.
@@ -66,29 +64,6 @@ public abstract class BaseActivity<M extends BaseModel, P extends BasePresenter>
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 设置竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        // 默认着色状态栏
-        SetStatusBarColor();
-    }
-
-    /**
-     * 着色状态栏（4.4以上系统有效）
-     */
-    protected void SetStatusBarColor() {
-        StatusBarCompat.setStatusBarColor(this, ContextCompat.getColor(this, android.R.color.black));
-    }
-
-    /**
-     * 着色状态栏（4.4以上系统有效）
-     */
-    protected void SetStatusBarColor(int color) {
-        StatusBarCompat.setStatusBarColor(this, color);
-    }
-
-    /**
-     * 沉浸状态栏（4.4以上系统有效）
-     */
-    protected void SetTranslanteBar() {
-        StatusBarCompat.translucentStatusBar(this);
     }
 
     /**

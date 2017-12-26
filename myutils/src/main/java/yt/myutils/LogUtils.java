@@ -61,12 +61,12 @@ public final class LogUtils {
     private static final int XML  = 0x30;
 
     private static ExecutorService sExecutor;
-    private static String          sDefaultDir;// log默认存储目录
-    private static String          sDir;       // log存储目录
-    private static String  sFilePrefix        = "util";// log文件前缀
+    private static String sDefaultDir;// log默认存储目录
+    private static String sDir;       // log存储目录
+    private static String sFilePrefix        = "util";// log文件前缀
     private static boolean sLogSwitch         = true;  // log总开关，默认开
     private static boolean sLog2ConsoleSwitch = true;  // logcat是否打印，默认打印
-    private static String  sGlobalTag         = null;  // log标签
+    private static String sGlobalTag         = null;  // log标签
     private static boolean sTagIsSpace        = true;  // log标签是否为空白
     private static boolean sLogHeadSwitch     = true;  // log头部开关，默认开
     private static boolean sLog2FileSwitch    = false; // log写入文件开关，默认关
@@ -545,9 +545,9 @@ public final class LogUtils {
     }
 
     private static class TagHead {
-        String   tag;
+        String tag;
         String[] consoleHead;
-        String   fileHead;
+        String fileHead;
 
         TagHead(String tag, String[] consoleHead, String fileHead) {
             this.tag = tag;

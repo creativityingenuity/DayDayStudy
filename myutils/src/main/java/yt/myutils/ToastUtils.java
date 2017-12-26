@@ -33,7 +33,7 @@ public final class ToastUtils {
     private static final int     COLOR_DEFAULT = 0xFEFFFFFF;
     private static final Handler HANDLER       = new Handler(Looper.getMainLooper());
 
-    private static Toast               sToast;
+    private static Toast sToast;
     private static WeakReference<View> sViewWeakReference;
     private static int sLayoutId  = -1;
     private static int gravity    = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;

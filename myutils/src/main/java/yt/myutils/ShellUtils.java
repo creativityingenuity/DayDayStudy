@@ -123,7 +123,7 @@ public final class ShellUtils {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-//            CloseUtils.closeIO(os, successResult, errorResult);
+            CloseUtils.closeIO(os, successResult, errorResult);
             if (process != null) {
                 process.destroy();
             }
