@@ -16,7 +16,7 @@ import io.reactivex.observers.DisposableObserver;
 import retrofit2.HttpException;
 import yt.mvpdemo.R;
 import yt.mvpdemo.base.BaseResponse;
-import yt.myutils.ToastUtils;
+import yt.myutils.core.ToastUtils;
 
 /**
  * Created by ${zhangyuanchao} on 2017/12/11.

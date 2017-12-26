@@ -24,8 +24,8 @@ import com.yt.daydaystudy.R;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
-import yt.myutils.LogUtils;
-import yt.myutils.PermissionUtils;
+import yt.myutils.core.LogUtils;
+import yt.myutils.core.PermissionUtils;
 
 /**
  * 内容知识点：
