@@ -1,3 +1,3 @@
-include ':app', ':mvpdemo', ':myutils'
+include ':app', ':mvpdemo', ':myutils', ':statusbarlibrary'
 include ':rsademo'
 include ':aesDemo'
