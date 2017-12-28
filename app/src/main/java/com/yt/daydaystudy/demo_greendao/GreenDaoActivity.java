@@ -3,13 +3,15 @@ package com.yt.daydaystudy.demo_greendao;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-import com.yt.daydaystudy.MyApplication;
 import com.yt.daydaystudy.R;
 import com.yt.daydaystudy.demo_greendao.dao.User;
-import com.yt.daydaystudy.greendao.UserDao;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * 目前使用较广，效率最高哈的数据库框架
@@ -21,34 +23,39 @@ import java.util.List;
  */
 public class GreenDaoActivity extends AppCompatActivity {
 
-    private UserDao userDao;
+    private ListView mLv;
+    private List<String> list;
+    private ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_green_dao);
-         userDao = MyApplication.getInstance().getDaoSession().getUserDao();
+        mLv = (ListView) findViewById(R.id.lv);
+        list = new ArrayList<>();
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, list);
+        mLv.setAdapter(arrayAdapter);
     }
 
     public void add(View v){
-        User user = new User(2,"yt",32,"男");
-        userDao.insert(user);
+        DBManager.getInstance().insertUser(new User(1,"杨拓",23,"男"));
+        DBManager.getInstance().insertUser(new User(2,"杨拓111",23,"男"));
     }
 
     public void del(View v){
-        userDao.delete();
+        DBManager.getInstance().deleteUser(new User(1,"杨拓",23,"男"));
     }
 
     public void update(View v){
-        userDao.update();
+        DBManager.getInstance().updataUser(new User(2,"xxxxx",23,"男"));
     }
 
     public void find(View v){
-        List<User> users = mUserDao.loadAll();
-        String userName = "";
-        for (int i = 0; i < users.size(); i++) {
-            userName += users.get(i).getName()+",";
+        list.clear();
+        List<User> users = DBManager.getInstance().queryUserList();
+        for (User user : users) {
+            list.add(user.getName());
         }
-        mContext.setText("查询全部数据==>"+userName);
+        arrayAdapter.notifyDataSetChanged();
     }
 }
