@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Day Day Study</string>
     <string name="btn_name1">拍照上传</string>
+    <array name="main_txt">
+        <item>拍照上传</item>
+        <item>沉浸式状态栏</item>
+        <item>沉浸式状态栏</item>
+        <item>沉浸式状态栏</item>
+        <item>沉浸式状态栏</item>
+    </array>
 </resources>

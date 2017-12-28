@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!--用于传入对应的状态布局文件，在同一种状态中如果需要有不同的界面显示，便可以对应的传入layout文件，这样可以方便扩展-->
+    <declare-styleable name="NetworkStateView">
+        <!-- 加载中的布局id -->
+        <attr name="loadingView" format="reference" />
+
+        <!-- 加载错误的布局id -->
+        <attr name="errorView" format="reference" />
+      <!--  &lt;!&ndash; 加载错误的布局图片 &ndash;&gt;
+        <attr name="nsvErrorImage" format="reference" />
+        &lt;!&ndash; 加载错误的布局文字 &ndash;&gt;
+        <attr name="nsvErrorText" format="string" />-->
+
+        <!-- 没有数据的布局id -->
+        <attr name="emptyView" format="reference" />
+
+        <!-- 没有网络的布局id -->
+        <attr name="noNetworkView" format="reference" />
+    </declare-styleable>
+</resources>

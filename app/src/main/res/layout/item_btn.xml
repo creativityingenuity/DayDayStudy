@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:focusable="false"
     tools:context="com.yt.daydaystudy.MainActivity">
 
-    <GridView
-        android:id="@+id/gv"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:horizontalSpacing="2dp"
-        android:numColumns="5"
-        android:scrollbars="none"
-        android:verticalSpacing="2dp"></GridView>
+        android:background="#000"
+        android:padding="8dp"
+        android:focusable="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"></TextView>
 </RelativeLayout>
