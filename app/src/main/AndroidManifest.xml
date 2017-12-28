@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--图片裁剪-->
+
+        <!-- 图片裁剪 -->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -31,7 +32,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".demo_takephoto.PhotoUploadActivity"></activity>
+        <activity android:name=".demo_takephoto.PhotoUploadActivity" />
+        <activity android:name=".demo_statusbarcolor.StatusBarActivity" />
+        <activity android:name=".demo_greendao.GreenDaoActivity"></activity>
     </application>
 
 </manifest>

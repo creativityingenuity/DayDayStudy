@@ -6,9 +6,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.yt.daydaystudy.demo_statusbarcolor.StatusBarActivity;
 import com.yt.daydaystudy.demo_takephoto.PhotoUploadActivity;
-
-import yt.myutils.core.LogUtils;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     @Override
@@ -26,20 +25,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 0:
-                LogUtils.e("xxx");
                 PhotoUploadActivity.startAction(this);
                 break;
             case 1:
-                LogUtils.e("xxx");
+                StatusBarActivity.startAction(this);
                 break;
             case 2:
-                LogUtils.e("xxx");
                 break;
             case 3:
-                LogUtils.e("xxx");
                 break;
             case 4:
-                LogUtils.e("xxx");
                 break;
         }
     }
