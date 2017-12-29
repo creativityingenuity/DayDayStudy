@@ -6,6 +6,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 import yt.mvpdemo.base.BaseResponse;
 import yt.mvpdemo.mvp.model.entity.LoginEntity;
+import yt.mvpdemo.mvp.model.entity.RegisterEntity;
 
 /**
  * Created by ${zhangyuanchao} on 2017/12/1.
@@ -24,4 +25,8 @@ public interface APIServers {
                                                  @Field("request_time") String request_time,
                                                  @Field("userName") String userName,
                                                  @Field("passWord") String passWord);
+
+    @FormUrlEncoded
+    @POST("/Api/Member/login")
+    Observable<BaseResponse<RegisterEntity>> regist();
 }
