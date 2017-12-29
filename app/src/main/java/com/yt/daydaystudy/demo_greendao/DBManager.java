@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * 数据库管理
+ *  可以写个单利 也可以在application中初始化
  */
 
 public class DBManager {
@@ -89,6 +90,7 @@ public class DBManager {
 
     /**
      * 查询用户列表
+     *
      * @return
      */
     public List<User> queryUserList() {

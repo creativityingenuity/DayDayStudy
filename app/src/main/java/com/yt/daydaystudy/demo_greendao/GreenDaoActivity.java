@@ -17,9 +17,9 @@ import java.util.List;
  * 目前使用较广，效率最高哈的数据库框架
  * 地址：https://github.com/greenrobot/greenDAO
  * 使用步骤：
- *      1.greenDao框架的初始化(准备工作与依赖)
- *      2.创建实体类 接着点击 Build -> Make Project
- *      3.数据库操作类生成 开始用greenDao操作数据库:(用log来展示每次操作的数据变化):
+ * 1.greenDao框架的初始化(准备工作与依赖)
+ * 2.创建实体类 接着点击 Build -> Make Project
+ * 3.数据库操作类生成 开始用greenDao操作数据库:(用log来展示每次操作的数据变化):
  */
 public class GreenDaoActivity extends AppCompatActivity {
 
@@ -37,20 +37,20 @@ public class GreenDaoActivity extends AppCompatActivity {
         mLv.setAdapter(arrayAdapter);
     }
 
-    public void add(View v){
-        DBManager.getInstance().insertUser(new User(1,"杨拓",23,"男"));
-        DBManager.getInstance().insertUser(new User(2,"杨拓111",23,"男"));
+    public void add(View v) {
+        DBManager.getInstance().insertUser(new User(1, "杨拓", 23, "男"));
+        DBManager.getInstance().insertUser(new User(2, "杨拓111", 23, "男"));
     }
 
-    public void del(View v){
-        DBManager.getInstance().deleteUser(new User(1,"杨拓",23,"男"));
+    public void del(View v) {
+        DBManager.getInstance().deleteUser(new User(1, "杨拓", 23, "男"));
     }
 
-    public void update(View v){
-        DBManager.getInstance().updataUser(new User(2,"xxxxx",23,"男"));
+    public void update(View v) {
+        DBManager.getInstance().updataUser(new User(2, "xxxxx", 23, "男"));
     }
 
-    public void find(View v){
+    public void find(View v) {
         list.clear();
         List<User> users = DBManager.getInstance().queryUserList();
         for (User user : users) {
