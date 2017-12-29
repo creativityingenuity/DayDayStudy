@@ -34,7 +34,7 @@
         </activity>
         <activity android:name=".demo_takephoto.PhotoUploadActivity" />
         <activity android:name=".demo_statusbarcolor.StatusBarActivity" />
-        <activity android:name=".demo_greendao.GreenDaoActivity"></activity>
+        <activity android:name=".demo_greendao.GreenDaoActivity" android:theme="@style/GreenDaoTheme"></activity>
     </application>
 
 </manifest>

@@ -4,46 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="@dimen/padding_top"
+    android:background="@color/colorPrimaryDark"
     tools:context="com.yt.daydaystudy.demo_greendao.GreenDaoActivity">
 
     <Button
         android:id="@+id/button"
-        android:onClick="add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="add"
         android:text="增"
         tools:layout_editor_absoluteX="2dp"
         tools:layout_editor_absoluteY="-6dp" />
 
     <Button
         android:id="@+id/button2"
-        android:onClick="del"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/button"
+        android:onClick="del"
         android:text="删"
         tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="3dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/button" />
+        tools:layout_editor_absoluteY="3dp" />
 
     <Button
         android:id="@+id/button3"
-        android:onClick="update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="改"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/button2" />
+        android:layout_toEndOf="@+id/button2"
+        android:onClick="update"
+        android:text="改" />
 
     <Button
-        android:onClick="find"
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="查"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/button3" />
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/button3"
+        android:onClick="find"
+        android:text="查" />
 
     <ListView
         android:id="@+id/lv"
