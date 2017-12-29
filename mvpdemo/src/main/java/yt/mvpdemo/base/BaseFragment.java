@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
 import yt.mvpdemo.commen.AppManager;
 
 /**
@@ -16,7 +17,6 @@ import yt.mvpdemo.commen.AppManager;
 
 public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel> extends Fragment {
     public View rootView;
-    public LayoutInflater inflater;
     protected P mPresenter;
     private M mModel;
     private Activity mActivity;
@@ -30,10 +30,10 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
     @Override
     public final View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        this.inflater = inflater;
         if (rootView == null) {
             rootView = inflater.inflate(this.getLayoutId(), container, false);
         }
+        ButterKnife.bind(this, rootView);
         mPresenter = AppManager.getAppManager().getT(this, 0);
         mModel = AppManager.getAppManager().getT(this, 1);
         initPresenter();
@@ -76,5 +76,6 @@ public abstract class BaseFragment<P extends BasePresenter, M extends BaseModel>
         if (mPresenter != null) {
             mPresenter.onDetachVM();
         }
+        ButterKnife.unbind(this);
     }
 }

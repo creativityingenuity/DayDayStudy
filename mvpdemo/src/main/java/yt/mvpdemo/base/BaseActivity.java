@@ -1,9 +1,7 @@
 package yt.mvpdemo.base;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 
 import butterknife.ButterKnife;
@@ -22,7 +20,6 @@ public abstract class BaseActivity<M extends BaseModel, P extends BasePresenter>
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        doBeforeSetcontentView();
         setContentView(getLayoutId());
         mModel = AppManager.getAppManager().getT(this, 0);
         mPresenter = AppManager.getAppManager().getT(this, 1);
@@ -54,17 +51,6 @@ public abstract class BaseActivity<M extends BaseModel, P extends BasePresenter>
      */
     protected abstract void init(Bundle savedInstanceState);
 
-    /**
-     * 设置layout前配置
-     */
-    private void doBeforeSetcontentView() {
-        // 把actvity放到application栈中管理
-        AppManager.getAppManager().addActivity(this);
-        // 无标题
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        // 设置竖屏
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-    }
 
     /**
      * 隐藏键盘
