@@ -28,6 +28,7 @@ import yt.mvpdemo.mvp.model.entity.LoginEntity;
 import yt.mvpdemo.mvp.model.entity.RegisterEntity;
 import yt.mvpdemo.net.DefaultObserver;
 import yt.mvpdemo.net.NetHelper;
+import yt.myutils.core.LogUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,8 +37,50 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         /*rxjava练习*/
-        scene1();
-        scene2();
+//        scene1();
+//        scene2();
+
+        /*简单练习*/
+//        test4();
+        test5();
+    }
+
+    private void test5() {
+        Observable.zip(Observable.just(1, 2, 3,5,78,8,9,0), Observable.just("A","B","C"),
+                new BiFunction<Integer, String, String>() {
+                    @Override
+                    public String apply(@NonNull Integer integer, @NonNull String s) throws Exception {
+                        return integer+s;
+                    }
+                })
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(@NonNull String s) throws Exception {
+                        LogUtils.e(s);
+                    }
+                });
+    }
+
+    private void test4() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<Integer> e) throws Exception {
+                e.onNext(1);
+                e.onNext(2);
+                e.onNext(3);
+                e.onComplete();
+            }
+        }).map(new Function<Integer, Integer>() {
+            @Override
+            public Integer apply(@NonNull Integer integer) throws Exception {
+                return integer * 10;
+            }
+        }).subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(@NonNull Integer integer) throws Exception {
+                LogUtils.e(integer);
+            }
+        });
     }
 
     /**
@@ -64,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 .flatMap(new Function<BaseResponse<RegisterEntity>, ObservableSource<BaseResponse<LoginEntity>>>() {
                     @Override
                     public ObservableSource<BaseResponse<LoginEntity>> apply(@NonNull BaseResponse<RegisterEntity> registerEntityBaseResponse) throws Exception {
-                        return NetHelper.getApiServers().login("","","","");//登录
+                        return NetHelper.getApiServers().login("", "", "", "");//登录
                     }
                 })
                 /*2.使用compose简化代码*/

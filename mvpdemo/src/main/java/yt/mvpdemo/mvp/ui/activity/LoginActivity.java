@@ -1,5 +1,6 @@
 package yt.mvpdemo.mvp.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.widget.Button;
@@ -47,6 +48,7 @@ public class LoginActivity extends BaseActivity<LoginModel,LoginPresenter> imple
 
     @Override
     public void returnLogin(LoginEntity loginEntity) {
+        startActivity(new Intent(this,MainActivity.class));
         System.out.println(loginEntity.getName());
     }
 }
