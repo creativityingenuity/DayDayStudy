@@ -10,6 +10,7 @@ import android.widget.GridView;
 import com.yt.daydaystudy.demo_greendao.GreenDaoActivity;
 import com.yt.daydaystudy.demo_statusbarcolor.StatusBarActivity;
 import com.yt.daydaystudy.demo_takephoto.PhotoUploadActivity;
+import com.yt.daydaystudy.test_diyview.DiyViewActivity;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     @Override
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 startActivity(new Intent(this,GreenDaoActivity.class));
                 break;
             case 3:
+                DiyViewActivity.startAction(this);
                 break;
             case 4:
                 break;

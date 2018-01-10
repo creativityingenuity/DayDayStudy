@@ -33,9 +33,9 @@ dependencies {
     })
     compile project(':myutils')
     compile project(':statusbarlibrary')
+    //greendao
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    //greendao
     compile 'org.greenrobot:greendao:3.2.2'
+    testCompile 'junit:junit:4.12'
 }
