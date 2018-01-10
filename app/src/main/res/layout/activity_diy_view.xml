@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.yt.daydaystudy.test_diyview.DiyViewActivity">
     <com.yt.daydaystudy.test_diyview.BiaoPanView
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>
