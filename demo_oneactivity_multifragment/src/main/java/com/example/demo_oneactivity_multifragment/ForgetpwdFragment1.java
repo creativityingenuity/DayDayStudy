@@ -25,83 +25,36 @@ import butterknife.OnClick;
  * Created by ${zhangyuanchao} on 2017/12/18.
  */
 
-public class ForgetpwdFragment1 extends BaseFragment<ChangePhonePresenter,ChangePhoneModel> implements ChangePhoneContract.View{
-    @Bind(R.id.iv_top_left)
-    ImageView ivTopLeft;
-    @Bind(R.id.tv_title)
-    TextView tvTitle;
-    @Bind(R.id.tv_phone)
-    EditText tvPhone;
-    @Bind(R.id.et_code)
-    EditText etCode;
-    @Bind(R.id.btn_sendcode)
-    Button btnSendcode;
-    @Bind(R.id.btn_next)
-    Button btnNext;
-    private CountDownTimerUtils timerUtils;
+public class ForgetpwdFragment1 extends BaseFragment {
+
     public static ForgetpwdFragment1 newInstance() {
         Bundle args = new Bundle();
         ForgetpwdFragment1 fragment = new ForgetpwdFragment1();
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_forget_pwd_one;
+        return R.layout.fragment_one;
     }
 
     @Override
     protected void init(Bundle savedInstanceState) {
-        tvTitle.setText("找回登录密码");
-        ivTopLeft.setVisibility(View.VISIBLE);
-        timerUtils = new CountDownTimerUtils(mActivity,btnSendcode);
+
     }
 
-    @OnClick({R.id.iv_top_left, R.id.btn_sendcode, R.id.btn_next})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.iv_top_left:
-                mActivity.finish();
-                break;
-            case R.id.btn_sendcode:
-                String s = tvPhone.getText().toString();
-                if(TextUtils.isEmpty(s)){
-                    showToast("请输入手机号");
-                    return;
-                }
-                mPresenter.sendCodeRequest(s,"");
-                timerUtils.start();
-                break;
-            case R.id.btn_next:
-                String code = etCode.getText().toString().trim();
-                if(TextUtils.isEmpty(code)){
-                    ToastUtils.showShort("请输入验证码");
-                }else {
-                    mPresenter.verifyCodeRequest(tvPhone.getText().toString(),code,"3");
-                }
-                break;
+    public void back(View v) {
+        goBack();
+    }
+
+    public void startNextFragment(View v) {
+        if (mActivity instanceof onFragmentItemClickListener) {
+            ((MainActivity) mActivity).goNext("123456789");
         }
     }
 
-    @Override
-    public void returnsendCode(String msg) {
-        showToast(msg);
-    }
-
-    @Override
-    public void returnVetifyCode(String msg) {
-        ToastUtils.showShort(msg);
-        if(mActivity instanceof onForgetFragment1ItemClick){
-            ((ForgetActivity) mActivity).onNextItemCLickListener(tvPhone.getText().toString());
-        }
-    }
-    //unuse
-    @Override
-    public void returnRegister(RegisterEntity data) {
-
-    }
-
-    public interface onForgetFragment1ItemClick{
-        void onNextItemCLickListener(String phone);
+    public interface onFragmentItemClickListener {
+        void goNext(String phone);
     }
 }
