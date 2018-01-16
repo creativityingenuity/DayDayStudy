@@ -2,17 +2,25 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/DayDayStudy.iml" filepath="$PROJECT_DIR$/DayDayStudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/DayDayStudy.iml" filepath="$PROJECT_DIR$/.idea/DayDayStudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo_aes/demo_aes.iml" filepath="$PROJECT_DIR$/demo_aes/demo_aes.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_aes/demo_aes.iml" filepath="$PROJECT_DIR$/demo_aes/demo_aes.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_mvp/demo_mvp.iml" filepath="$PROJECT_DIR$/demo_mvp/demo_mvp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo_mvp/demo_mvp.iml" filepath="$PROJECT_DIR$/demo_mvp/demo_mvp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo_oneactivity_multifragment/demo_oneactivity_multifragment.iml" filepath="$PROJECT_DIR$/demo_oneactivity_multifragment/demo_oneactivity_multifragment.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_oneactivity_multifragment/demo_oneactivity_multifragment.iml" filepath="$PROJECT_DIR$/demo_oneactivity_multifragment/demo_oneactivity_multifragment.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_rsa/demo_rsa.iml" filepath="$PROJECT_DIR$/demo_rsa/demo_rsa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo_rsa/demo_rsa.iml" filepath="$PROJECT_DIR$/demo_rsa/demo_rsa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_statusbar/lib_statusbar.iml" filepath="$PROJECT_DIR$/lib_statusbar/lib_statusbar.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_statusbar/lib_statusbar.iml" filepath="$PROJECT_DIR$/lib_statusbar/lib_statusbar.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_utils/lib_utils.iml" filepath="$PROJECT_DIR$/lib_utils/lib_utils.iml" />
-      <module fileurl="file://E:\Android_Work\DayDayStudy\demo_mvp\mvpdemo.iml" filepath="E:\Android_Work\DayDayStudy\demo_mvp\mvpdemo.iml" />
-      <module fileurl="file://E:\Android_Work\DayDayStudy\lib_utils\myutils.iml" filepath="E:\Android_Work\DayDayStudy\lib_utils\myutils.iml" />
-      <module fileurl="file://E:\Android_Work\DayDayStudy\demo_rsa\rsademo.iml" filepath="E:\Android_Work\DayDayStudy\demo_rsa\rsademo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_utils/lib_utils.iml" filepath="$PROJECT_DIR$/lib_utils/lib_utils.iml" />
+      <module fileurl="file://E:/Android_Work/DayDayStudy/demo_mvp/mvpdemo.iml" filepath="E:/Android_Work/DayDayStudy/demo_mvp/mvpdemo.iml" />
+      <module fileurl="file://E:/Android_Work/DayDayStudy/lib_utils/myutils.iml" filepath="E:/Android_Work/DayDayStudy/lib_utils/myutils.iml" />
+      <module fileurl="file://E:/Android_Work/DayDayStudy/demo_rsa/rsademo.iml" filepath="E:/Android_Work/DayDayStudy/demo_rsa/rsademo.iml" />
     </modules>
   </component>
 </project>
