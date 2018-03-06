@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.yt.daydaystudy.test_diyview.DiyViewActivity">
-    <com.yt.daydaystudy.test_diyview.BiaoPanView
+    <!--<com.yt.daydaystudy.test_diyview.BiaoPanView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />-->
+    <com.yt.daydaystudy.test_diyview.NewTextView
+        android:layout_width="500dp"
+        android:text="xxxxxxxxxxxxxxxx"
+        android:layout_height="500dp" />
 </RelativeLayout>

@@ -48,11 +48,14 @@ public class BiaoPanView extends View {
         textPaint.setAntiAlias(true);
         textPaint.setTextSize(15);
 
+
+        postInvalidateDelayed(100);
         keduPaint = new Paint();
         keduPaint.setColor(Color.BLUE);
         keduPaint.setStyle(Paint.Style.STROKE);
 
         textPath = new Path();
+        getScaleY();
     }
 
     @Override

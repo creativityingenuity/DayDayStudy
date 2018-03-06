@@ -46,6 +46,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void test5() {
+        Observable.zip(new ObservableSource<Integer>() {
+            @Override
+            public void subscribe(Observer<? super Integer> observer) {
+                    observer.onNext(1);
+                    observer.onNext(2);
+                    observer.onNext(3);
+                    observer.onNext(4);
+            }
+        }, new ObservableSource<String>() {
+            @Override
+            public void subscribe(Observer<? super String> observer) {
+                observer.onNext("A");
+                observer.onNext("B");
+                observer.onNext("C");
+                observer.onNext("D");
+            }
+        }, new BiFunction<Integer, String, String>() {
+            @Override
+            public String apply(Integer integer, String s) throws Exception {
+                return null;
+            }
+        });
+        Observable.just(1,2,3)
+                .map(new Function<Integer, Integer>() {
+                    @Override
+                    public Integer apply(Integer integer) throws Exception {
+                        return 10*integer;
+                    }
+                })
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+
+                    }
+                });
+
+
         Observable.zip(Observable.just(1, 2, 3,5,78,8,9,0), Observable.just("A","B","C"),
                 new BiFunction<Integer, String, String>() {
                     @Override

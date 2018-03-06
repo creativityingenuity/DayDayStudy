@@ -37,7 +37,8 @@
         <activity
             android:name=".demo_greendao.GreenDaoActivity"
             android:theme="@style/GreenDaoTheme" />
-        <activity android:name=".test_diyview.DiyViewActivity"></activity>
+        <activity android:name=".test_diyview.DiyViewActivity" />
+        <activity android:name=".test_01.Main2Activity"></activity>
     </application>
 
 </manifest>

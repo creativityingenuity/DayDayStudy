@@ -34,7 +34,7 @@ public class ForgetpwdFragment1 extends BaseFragment {
     public void startNextFragment(View v) {
         if (mActivity instanceof onFragmentItemClickListener) {
 //            ((MainActivity) mActivity).goNext("123456789");
-        }
+                          }
     }
 
     public interface onFragmentItemClickListener {
