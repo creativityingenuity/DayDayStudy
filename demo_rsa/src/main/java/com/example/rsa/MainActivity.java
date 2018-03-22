@@ -11,6 +11,19 @@ import java.io.InputStream;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
+/**
+ * 非对称加密：
+     定义：加密和解密使用的是两个不同的密钥
+     加密算法：RAS-公钥加密算法
+     原理：
+     1. 客户端随机生成非对称加密密钥PK1,SK1
+     2. 客户端把PK1明文发送给服务端。
+     3. 服务端随机生成对称加密K，并用PK1加密后发送给客户端
+     4. 客户端拿到通过PK1加密后的K，通过SK1解密后，获取到服务端发来的对称加密密钥。
+     5. 双方完成对称加密密钥的交换，接下来就可以用 k 来进行数据加密传输。
+     缺点：缺乏身份认证机制，容易受到中间人攻击。
+
+ */
 public class MainActivity extends Activity implements OnClickListener {
     private Button btn1, btn2;// 加密，解密
     private EditText et1, et2, et3;// 需加密的内容，加密后的内容，解密后的内容

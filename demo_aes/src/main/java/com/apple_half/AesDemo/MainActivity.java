@@ -8,6 +8,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * 对称加密
+ * 加密和解密时使用相同的密钥
+ * 原理：
+     1.	客户端和服务端分别拥有一个相同的秘钥key
+     2.	客户端使用相同的秘钥key，对数据进行加密，发送给服务端
+     3.	服务器端接收到数据，使用相同秘钥key，进行解密。
+ */
 public class MainActivity extends Activity {
 
     // 定义自己的秘钥、位移量

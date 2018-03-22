@@ -17,4 +17,8 @@ public class DiyViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diy_view);
     }
+
+    void tt(){
+
+    }
 }
