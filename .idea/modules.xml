@@ -6,7 +6,6 @@
       <module fileurl="file://E:\Android_Work\DayDayStudy\DayDayStudy.iml" filepath="E:\Android_Work\DayDayStudy\DayDayStudy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_aes/demo_aes.iml" filepath="$PROJECT_DIR$/demo_aes/demo_aes.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo_mvp/demo_mvp.iml" filepath="$PROJECT_DIR$/demo_mvp/demo_mvp.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_oneactivity_multifragment/demo_oneactivity_multifragment.iml" filepath="$PROJECT_DIR$/demo_oneactivity_multifragment/demo_oneactivity_multifragment.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_rsa/demo_rsa.iml" filepath="$PROJECT_DIR$/demo_rsa/demo_rsa.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_statusbar/lib_statusbar.iml" filepath="$PROJECT_DIR$/lib_statusbar/lib_statusbar.iml" />
