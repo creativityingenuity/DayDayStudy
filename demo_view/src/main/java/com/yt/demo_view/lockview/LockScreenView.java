@@ -82,7 +82,7 @@ public class LockScreenView extends View {
         allPointList.clear();
         for (int i = 1; i <= count; i++) {
             for (int j = 1; j <= count; j++) {
-                allPointList.add(new Point(size * i / 4, size * j / 4));
+                allPointList.add(new Point(size * i / 4, size * j / 4, i * j));
                 canvas.drawCircle(size * i / 4, size * j / 4, radius, pointPaint);
             }
         }
@@ -160,10 +160,10 @@ public class LockScreenView extends View {
                 //这里判断选中点的数量小于4个 则表示错误
                 if (pointSize < 4) {
                     state = STATE_ERROR;
+                    //两秒以后清除选中的点
+                    clearPoint();
                 }
                 invalidate();
-                //两秒以后清除选中的点
-                clearPoint();
                 break;
         }
         return true;
@@ -186,6 +186,14 @@ public class LockScreenView extends View {
     }
 
     /**
+     * 立即清除选中的点
+     */
+    public void clear() {
+        currentPointList.clear();
+        invalidate();
+    }
+
+    /**
      * 重置
      */
     private void resetPoint() {
@@ -196,6 +204,7 @@ public class LockScreenView extends View {
 
     /**
      * 获取选中的点
+     *
      * @param moveX
      * @param moveY
      * @return
@@ -254,12 +263,35 @@ public class LockScreenView extends View {
      * 点类
      */
     class Point {
-        int x, y;
+        int x, y, id;
 
         public Point(int x, int y) {
             this.x = x;
             this.y = y;
         }
+
+        public Point(int x, int y, int id) {
+            this.x = x;
+            this.y = y;
+            this.id = id;
+        }
     }
+
+    /**
+     * 获取连线的点ID
+     *
+     * @return
+     */
+    public int[] getAnswers() {
+        if (currentPointList != null && currentPointList.size() > 0 && isActionUp) {
+            int[] ans = new int[currentPointList.size()];
+            for (int i = 0; i < currentPointList.size(); i++) {
+                ans[i] = currentPointList.get(i).id;
+            }
+            return ans;
+        }
+        return new int[0];
+    }
+
 
 }

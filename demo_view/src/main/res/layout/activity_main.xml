@@ -7,11 +7,22 @@
     tools:context="com.yt.demo_view.MainActivity">
 
     <com.yt.demo_view.lockview.LockScreenView
-        android:layout_width="500dp"
-        android:layout_height="500dp"
+        android:id="@+id/lsv"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="确认"
+        android:onClick="confirm"
+        app:layout_constraintTop_toBottomOf="@+id/lsv"
+        tools:layout_editor_absoluteX="295dp" />
 
 </android.support.constraint.ConstraintLayout>
