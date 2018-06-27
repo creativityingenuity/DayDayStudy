@@ -21,12 +21,12 @@
         android:layout_alignBottom="@+id/btn_back"
         android:layout_toEndOf="@+id/btn_back"
         android:layout_toRightOf="@+id/btn_back"
-        android:text="跳到下一个界面" />
+        android:text="结束流程" />
 
     <EditText
         android:id="@+id/et_input"
         android:layout_width="wrap_content"
-        android:hint="设置手机号"
+        android:hint="设置密码"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="19dp"

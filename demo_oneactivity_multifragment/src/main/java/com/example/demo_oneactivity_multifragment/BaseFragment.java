@@ -16,8 +16,6 @@ import android.view.ViewGroup;
 public abstract class BaseFragment extends Fragment {
     public View rootView;
     public Activity mActivity;
-
-
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
