@@ -108,7 +108,6 @@ public class LoginActivity extends AppCompatActivity {
         //第二个fragment进入，需要隐藏上一个fragment
         if (fragments.size() != 0) {
             transaction.hide(fragments.get(fragments.size() - 1))
-                    .show(fragment)
                     .addToBackStack(fragment.getClass().getSimpleName());
         }
         transaction.commit();
