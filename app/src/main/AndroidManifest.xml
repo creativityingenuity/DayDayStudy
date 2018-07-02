@@ -43,7 +43,10 @@
         <receiver
             android:name=".test_diyview.MyReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
+
+        <activity android:name=".demo_arouter.ArouterDemoActivity" />
+        <activity android:name=".demo_arouter.SimpleActivity"></activity>
     </application>
 
 </manifest>

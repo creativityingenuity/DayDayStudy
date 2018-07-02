@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.yt.daydaystudy.demo_arouter.ArouterDemoActivity;
 import com.yt.daydaystudy.demo_greendao.GreenDaoActivity;
 import com.yt.daydaystudy.demo_statusbarcolor.StatusBarActivity;
 import com.yt.daydaystudy.demo_takephoto.PhotoUploadActivity;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 DiyViewActivity.startAction(this);
                 break;
             case 4:
+                ArouterDemoActivity.startAction(this);
                 break;
         }
     }
