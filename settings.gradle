@@ -1,3 +1,3 @@
-include ':app',  ':lib_utils', ':lib_statusbar', ':demo_oneactivity_multifragment', ':demo_view', ':demo_uifix'
+include ':app',  ':lib_utils', ':lib_statusbar', ':demo_oneactivity_multifragment', ':demo_view', ':demo_uifix', ':demo_export_excel'
 include ':demo_rsa'
 include ':demo_aes'

@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/demo_aes" />
+            <option value="$PROJECT_DIR$/demo_export_excel" />
             <option value="$PROJECT_DIR$/demo_oneactivity_multifragment" />
             <option value="$PROJECT_DIR$/demo_rsa" />
             <option value="$PROJECT_DIR$/demo_uifix" />
