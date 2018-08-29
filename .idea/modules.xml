@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DayDayStudy.iml" filepath="$PROJECT_DIR$/.idea/DayDayStudy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/amapsmoothmarker/amapsmoothmarker.iml" filepath="$PROJECT_DIR$/amapsmoothmarker/amapsmoothmarker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_aes/demo_aes.iml" filepath="$PROJECT_DIR$/demo_aes/demo_aes.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_export_excel/demo_export_excel.iml" filepath="$PROJECT_DIR$/demo_export_excel/demo_export_excel.iml" />

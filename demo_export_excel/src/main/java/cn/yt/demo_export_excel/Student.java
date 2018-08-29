@@ -24,5 +24,6 @@ public class Student {
         this.math = math;
         this.english = english;
         this.chinese = chinese;
+//        BuildConfig.DEBUG
     }
 }
