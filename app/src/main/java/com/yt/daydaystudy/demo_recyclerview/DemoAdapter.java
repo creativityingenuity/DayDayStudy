@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.yt.daydaystudy.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,10 +17,15 @@ import java.util.List;
  */
 
 class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.DemoViewHolder> {
+    private List<Boolean> isClicks;
     private List<String> mData;
 
     public DemoAdapter(List<String> data) {
         mData = data;
+        isClicks = new ArrayList<>();
+        for(int i = 0;i<mData.size();i++){
+            isClicks.add(false);
+        }
     }
 
     @Override
@@ -28,7 +34,7 @@ class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.DemoViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(DemoViewHolder holder, int position) {
+    public void onBindViewHolder(final DemoViewHolder holder, int position) {
         /**
          * 数据处理和视图加载分离
          * 优化1. 从后台拉取数据后，若是数据需要进行二次解析 那么就放在网络请求子线程中去做
@@ -38,6 +44,33 @@ class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.DemoViewHolder> {
          */
         String s = mData.get(position);
         holder.tv.setText(s);
+        //设置点击选择器
+        if(isClicks.get(position)){
+//            viewHolder.back.setBackgroundColor(Color.parseColor("#f0f0f0"));
+        }else{
+        }
+
+        if(mOnItemClickListener!=null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = holder.getLayoutPosition(); // 1
+                    for(int i = 0; i <isClicks.size();i++){
+                        isClicks.set(i,false);
+                    }
+                    isClicks.set(position,true);
+                    notifyDataSetChanged();
+                    mOnItemClickListener.onItemClick(holder.itemView, position); // 2
+                }
+            });
+        }
+    }
+    private OnItemClickListener mOnItemClickListener;
+    public interface OnItemClickListener{
+        void onItemClick(View view,int position);
+    }
+    public void setOnItemClickListener(OnItemClickListener mOnItemClickListener){
+        this.mOnItemClickListener = mOnItemClickListener;
     }
 
     @Override
