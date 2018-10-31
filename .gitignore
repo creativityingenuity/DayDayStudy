@@ -1,9 +1,28 @@
+#java class
+*.class
+
+#idea
+.idea/
+/idea/
+*.ipr
 *.iml
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
-.DS_Store
+*.iws
+
+#gradle diretory
+.gradle/
+
 /build
+
+#files for the dex vm
+*.dex
+*.apk
+
+local.properties
+
+.DS_Store
 /captures
-.externalNativeBuild
+bin/
+gen/
+# Windows thumbnail db
+Thumbs.db
+
