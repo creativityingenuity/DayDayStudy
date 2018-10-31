@@ -46,7 +46,9 @@
             android:exported="true" />
 
         <activity android:name=".demo_arouter.ArouterDemoActivity" />
-        <activity android:name=".demo_arouter.SimpleActivity"></activity>
+        <activity android:name=".demo_recyclerview.RecyclerViewDemoActivity" />
+        <activity android:name=".demo_arouter.SimpleActivity" />
+        <activity android:name=".demo_cjs.CJSActivity"></activity>
     </application>
 
 </manifest>

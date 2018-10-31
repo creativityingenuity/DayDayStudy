@@ -2,19 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:descendantFocusability="blocksDescendants"
-    android:focusable="false"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context="com.yt.daydaystudy.MainActivity">
 
     <TextView
         android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
         android:background="#000"
-        android:padding="8dp"
-        android:focusable="false"
+        android:padding="4dp"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="12sp"></TextView>
 </RelativeLayout>

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:horizontalSpacing="2dp"
-        android:numColumns="5"
+        android:numColumns="4"
         android:scrollbars="none"
         android:verticalSpacing="2dp"></GridView>
 </RelativeLayout>
