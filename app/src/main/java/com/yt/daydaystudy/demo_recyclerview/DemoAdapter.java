@@ -16,7 +16,7 @@ import java.util.List;
  * Created by YT on 2018/10/25.
  */
 
-class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.DemoViewHolder> {
+public class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.DemoViewHolder> {
     private List<Boolean> isClicks;
     private List<String> mData;
 
