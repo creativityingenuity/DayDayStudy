@@ -1,10 +1,12 @@
 package com.yt.demo_view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.yt.demo_view.lockview.LockScreenView;
+import com.yt.demo_view.treeview.TreeViewActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,5 +25,6 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(i);
         }
         ls.clear();
+        startActivity(new Intent(this, TreeViewActivity.class));
     }
 }

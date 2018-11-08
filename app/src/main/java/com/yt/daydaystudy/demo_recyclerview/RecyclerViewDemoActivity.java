@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 
 import com.yt.daydaystudy.R;
@@ -87,6 +88,12 @@ public class RecyclerViewDemoActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rv_demo);
         mRecyclerView = (RecyclerView) findViewById(R.id.rv);
+
+        //使recyclerview吗，每次滑动结束后，保持在正中间
+        LinearSnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(mRecyclerView);
+        //设置item间隔
+        mRecyclerView.addItemDecoration(new GalleryItemDecoration());
         initData();
     }
 

@@ -48,8 +48,10 @@
         <activity android:name=".demo_arouter.ArouterDemoActivity" />
         <activity android:name=".demo_recyclerview.RecyclerViewDemoActivity" />
         <activity android:name=".demo_arouter.SimpleActivity" />
-        <activity android:name=".demo_cjs.CJSActivity"
-            android:theme="@style/MyTheme"></activity>
+        <activity
+            android:name=".demo_cjs.CJSActivity"
+            android:theme="@style/MyTheme" />
+        <activity android:name=".demo_kotlin.KotlinDemoActivity"></activity>
     </application>
 
 </manifest>
