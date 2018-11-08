@@ -2,6 +2,7 @@ package com.yt.demo_view.treeview;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -11,6 +12,8 @@ import com.yt.demo_view.R;
 import com.yt.demo_view.treeview.sf.MyHolder;
 
 public class TreeViewActivity extends AppCompatActivity {
+
+    private AndroidTreeView tView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +25,9 @@ public class TreeViewActivity extends AppCompatActivity {
         TreeNode root = TreeNode.root();
 
         //1
-        TreeNode p1 = new TreeNode(new MyHolder.IconTreeItem("parent1"));
-        TreeNode p2 = new TreeNode(new MyHolder.IconTreeItem("parent2"));
-        TreeNode p3 = new TreeNode(new MyHolder.IconTreeItem("parent3"));
+        TreeNode p1 = new TreeNode(new MyHolder.IconTreeItem(R.string.ic_folder,"parent1"));
+        TreeNode p2 = new TreeNode(new MyHolder.IconTreeItem(R.string.ic_folder,"parent2"));
+        TreeNode p3 = new TreeNode(new MyHolder.IconTreeItem(R.string.ic_folder,"parent3"));
         //添加子节点
         fillFolder(p1);
         fillFolder(p2);
@@ -34,10 +37,11 @@ public class TreeViewActivity extends AppCompatActivity {
         root.addChildren(p1, p2, p3);
 
         //将树形结构布局视图添加到布局中
-        AndroidTreeView tView = new AndroidTreeView(this, root);
+        tView = new AndroidTreeView(this, root);
         tView.setDefaultAnimation(true);
         tView.setUse2dScroll(true);
         tView.setDefaultContainerStyle(R.style.TreeNodeStyleCustom);
+        //给所有节点设置点击事件
         tView.setDefaultNodeClickListener(nodeClickListener);
         tView.setDefaultViewHolder(MyHolder.class);
         containerView.addView(tView.getView());
@@ -49,15 +53,20 @@ public class TreeViewActivity extends AppCompatActivity {
                 Toast.makeText(TreeViewActivity.this, "第二个节点", Toast.LENGTH_SHORT).show();
             }
         });
-
-        //给所有节点设置点击事件
-
+        //全部展开
+//        tView.expandAll();
+        if (savedInstanceState != null) {
+            String state = savedInstanceState.getString("tState");
+            if (!TextUtils.isEmpty(state)) {
+                tView.restoreState(state);
+            }
+        }
     }
 
     private void fillFolder(TreeNode folder) {
         TreeNode currentNode = folder;
         for (int i = 0; i < 5; i++) {
-            TreeNode file = new TreeNode(new MyHolder.IconTreeItem("parent3"));
+            TreeNode file = new TreeNode(new MyHolder.IconTreeItem(R.string.ic_folder, "parent3"));
             currentNode.addChild(file);
             currentNode = file;
         }
@@ -70,4 +79,9 @@ public class TreeViewActivity extends AppCompatActivity {
             Toast.makeText(TreeViewActivity.this, "Long click: " + item.text, Toast.LENGTH_SHORT).show();
         }
     };
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("tState", tView.getSaveState());
+    }
 }

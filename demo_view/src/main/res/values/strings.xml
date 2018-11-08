@@ -3,4 +3,6 @@
     <string name="ic_folder">&#xe09d;</string>
     <string name="ic_games">&#xe0a5;</string>
     <string name="ic_keyboard_arrow_right">&#xe0c7;</string>
+    <string name="ic_email">&#xe087;</string>
+    <string name="ic_keyboard_arrow_down">&#xe0c5;</string>
 </resources>
