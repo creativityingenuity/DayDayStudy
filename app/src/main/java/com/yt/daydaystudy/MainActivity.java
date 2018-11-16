@@ -1,9 +1,9 @@
 package com.yt.daydaystudy;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -11,7 +11,6 @@ import android.widget.GridView;
 import com.yt.daydaystudy.demo_arouter.ArouterDemoActivity;
 import com.yt.daydaystudy.demo_cjs.CJSActivity;
 import com.yt.daydaystudy.demo_greendao.GreenDaoActivity;
-import com.yt.daydaystudy.demo_kotlin.KotlinDemoActivity;
 import com.yt.daydaystudy.demo_recyclerview.RecyclerViewDemoActivity;
 import com.yt.daydaystudy.demo_statusbarcolor.StatusBarActivity;
 import com.yt.daydaystudy.demo_takephoto.PhotoUploadActivity;
@@ -22,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         /*后期会换成流式布局*/
         GridView mGridView = (GridView) findViewById(R.id.gv);
         String[] mainStrings = getResources().getStringArray(R.array.main_txt);
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 CJSActivity.startAction(this);
                 break;
             case 7:
-                KotlinDemoActivity.startAction(this);
+//                KotlinDemoActivity.startAction(this);
                 break;
         }
     }

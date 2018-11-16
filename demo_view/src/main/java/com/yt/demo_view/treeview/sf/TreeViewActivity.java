@@ -1,4 +1,4 @@
-package com.yt.demo_view.treeview;
+package com.yt.demo_view.treeview.sf;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,6 @@ import android.widget.Toast;
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 import com.yt.demo_view.R;
-import com.yt.demo_view.treeview.sf.MyHolder;
 
 public class TreeViewActivity extends AppCompatActivity {
 
@@ -75,6 +74,7 @@ public class TreeViewActivity extends AppCompatActivity {
     private TreeNode.TreeNodeClickListener nodeClickListener = new TreeNode.TreeNodeClickListener() {
         @Override
         public void onClick(TreeNode node, Object value) {
+//            node.
             MyHolder.IconTreeItem item = (MyHolder.IconTreeItem) value;
             Toast.makeText(TreeViewActivity.this, "Long click: " + item.text, Toast.LENGTH_SHORT).show();
         }

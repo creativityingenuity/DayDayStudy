@@ -185,6 +185,8 @@ greenDao是一个将对象映射到SQLite数据库中的轻量且快速的ORM解
 
 GreenDao的入口。**负责管理数据库对象（sqlitedatabase）和dao类**。
 
+保存数据库对象（SQLiteDatabase）并管理特定模式的 DAO 类（而不是对象）。它有静态方法来创建表或删除它们。它的内部类 OpenHelper 和DevOpenHelper 是 SQLiteOpenHelper 实现，它们在 SQLite 数据库中创建模式。
+
 通过它内部类 `OpenHelper` 和 `DevOpenHelper SQLiteOpenHelper` 创建不同模式的 SQLite 数据库
 >DaoSession (session 会议)
 

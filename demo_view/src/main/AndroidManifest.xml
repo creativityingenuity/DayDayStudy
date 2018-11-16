@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".treeview.TreeViewActivity"></activity>
+        <activity android:name=".treeview.sf.TreeViewActivity"></activity>
+        <activity android:name=".treeview.zj.TreeViewActivity1"></activity>
     </application>
 
 </manifest>

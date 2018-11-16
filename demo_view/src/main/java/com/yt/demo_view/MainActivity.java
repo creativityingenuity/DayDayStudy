@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.yt.demo_view.lockview.LockScreenView;
-import com.yt.demo_view.treeview.TreeViewActivity;
+import com.yt.demo_view.treeview.zj.TreeViewActivity1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +25,6 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(i);
         }
         ls.clear();
-        startActivity(new Intent(this, TreeViewActivity.class));
+        startActivity(new Intent(this, TreeViewActivity1.class));
     }
 }
