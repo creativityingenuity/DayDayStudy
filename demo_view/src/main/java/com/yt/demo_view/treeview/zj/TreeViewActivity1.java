@@ -24,6 +24,12 @@ public class TreeViewActivity1 extends AppCompatActivity {
 
             mAdapter = new SimpleTreeAdapter<FileBean>(mTree, this, mDatas, 10);
             mTree.setAdapter(mAdapter);
+            mAdapter.setOnTreeNodeClickListener(new TreeListViewAdapter.OnTreeNodeClickListener() {
+                @Override
+                public void onClick(Node node, int position) {
+//                    node.
+                }
+            });
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }

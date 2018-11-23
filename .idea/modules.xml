@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/amapsmoothmarker/amapsmoothmarker.iml" filepath="$PROJECT_DIR$/amapsmoothmarker/amapsmoothmarker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_aes/demo_aes.iml" filepath="$PROJECT_DIR$/demo_aes/demo_aes.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo_export_excel/demo_export_excel.iml" filepath="$PROJECT_DIR$/demo_export_excel/demo_export_excel.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_net/demo_net.iml" filepath="$PROJECT_DIR$/demo_net/demo_net.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_oneactivity_multifragment/demo_oneactivity_multifragment.iml" filepath="$PROJECT_DIR$/demo_oneactivity_multifragment/demo_oneactivity_multifragment.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo_rsa/demo_rsa.iml" filepath="$PROJECT_DIR$/demo_rsa/demo_rsa.iml" />
@@ -14,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/demo_view/demo_view.iml" filepath="$PROJECT_DIR$/demo_view/demo_view.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_statusbar/lib_statusbar.iml" filepath="$PROJECT_DIR$/lib_statusbar/lib_statusbar.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib_utils/lib_utils.iml" filepath="$PROJECT_DIR$/lib_utils/lib_utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yttreeview/yttreeview.iml" filepath="$PROJECT_DIR$/yttreeview/yttreeview.iml" />
     </modules>
   </component>
 </project>
