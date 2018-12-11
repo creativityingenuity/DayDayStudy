@@ -5,4 +5,4 @@ package cn.yt.demo_kotlin
  * Created by YT on 2018/11/30.
  * 实体类  实例
  */
-data class Entity(var name:String,var id :String) //? 前面为啥写var
+data class Entity(var name:String,var id :String) //var
