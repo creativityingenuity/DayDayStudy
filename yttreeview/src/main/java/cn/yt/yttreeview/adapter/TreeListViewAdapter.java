@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import cn.yt.yttreeview.R;
 import cn.yt.yttreeview.helper.TreeHelper;
 
 /**
@@ -29,7 +30,7 @@ public abstract class TreeListViewAdapter<T> extends BaseAdapter {
      * 存储所有的Node
      */
     protected List<Node> mAllNodes;
-
+    private View mLastView;
     /**
      * 点击的回调接口
      */
@@ -74,11 +75,14 @@ public abstract class TreeListViewAdapter<T> extends BaseAdapter {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 expandOrCollapse(position);
-
-                if (onTreeNodeClickListener != null) {
-                    onTreeNodeClickListener.onClick(mNodes.get(position),
-                            position);
+                if(mLastView!=null){
+                    mLastView.setBackgroundResource(R.color.white1);
                 }
+                view.setBackgroundResource(R.color.commen_devide1);
+                if (onTreeNodeClickListener != null) {
+                    onTreeNodeClickListener.onClick(mNodes.get(position), position);
+                }
+                mLastView = view;
             }
 
         });

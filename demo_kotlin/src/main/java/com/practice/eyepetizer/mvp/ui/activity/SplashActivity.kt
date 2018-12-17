@@ -9,6 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
 import cn.yt.demo_kotlin.R
+import com.practice.eyepetizer.globle.newIntent
 import kotlinx.android.synthetic.main.activity_splash.*
 
 /**
@@ -40,16 +41,14 @@ class SplashActivity : AppCompatActivity() {
         iv_icon_splash.startAnimation(animationSet)
         animationSet.setAnimationListener(object: Animation.AnimationListener {
             override fun onAnimationRepeat(p0: Animation?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onAnimationEnd(p0: Animation?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
 
             override fun onAnimationStart(p0: Animation?) {
-//                newIntent<MainActivity>()
-//                finish()
+                newIntent<MainActivity>()
+                finish()
             }
         })
 

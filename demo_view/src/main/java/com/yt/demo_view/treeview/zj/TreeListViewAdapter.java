@@ -8,6 +8,8 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
+import com.yt.demo_view.R;
+
 import java.util.List;
 
 /**
@@ -27,7 +29,7 @@ public abstract class TreeListViewAdapter<T> extends BaseAdapter {
      * 存储所有的Node
      */
     protected List<Node> mAllNodes;
-
+    private View mLastView;
     /**
      * 点击的回调接口
      */
@@ -72,11 +74,14 @@ public abstract class TreeListViewAdapter<T> extends BaseAdapter {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 expandOrCollapse(position);
-
-                if (onTreeNodeClickListener != null) {
-                    onTreeNodeClickListener.onClick(mNodes.get(position),
-                            position);
+                if(mLastView!=null){
+                    mLastView.setBackgroundResource(android.R.color.white);
                 }
+                view.setBackgroundResource(R.color.colorPrimaryDark);
+                if (onTreeNodeClickListener != null) {
+                    onTreeNodeClickListener.onClick(mNodes.get(position), position);
+                }
+                mLastView = view;
             }
 
         });
