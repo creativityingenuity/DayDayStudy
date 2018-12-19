@@ -2,6 +2,7 @@ package com.practice.eyepetizer.mvp.presenter
 
 import android.content.Context
 import com.practice.eyepetizer.mvp.contract.HomeContract
+import com.practice.eyepetizer.mvp.model.HomeModel
 
 /**
  * Call:vipggxs@163.com
@@ -14,11 +15,11 @@ class HomePresenter(context: Context,view : HomeContract.View) : HomeContract.Pr
         HomeModel()
     }
     override fun start() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun requestData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
 }
