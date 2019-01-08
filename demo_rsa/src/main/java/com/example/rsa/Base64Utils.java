@@ -2,6 +2,9 @@ package com.example.rsa;
 
 import java.io.UnsupportedEncodingException;
 
+/**
+ * base64
+ */
 public class Base64Utils {
     private static char[] base64EncodeChars = new char[]
             {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',

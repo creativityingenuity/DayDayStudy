@@ -5,9 +5,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-/**
- * Created by ${zhangyuanchao} on 2017/12/13.
- */
+
 
 public class MainGridViewAdapter extends BaseAdapter {
     private String[] tv;

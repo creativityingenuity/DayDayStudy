@@ -14,11 +14,12 @@ import cn.yt.yttreeview.anno.TreeNodePid;
 /**
  * Call:vipggxs@163.com
  * Created by YT on 2018/11/16.
+ *
  */
 
 public class TreeHelper {
     /**
-     * 传入我们的普通bean，转化为我们排序后的Node
+     * 传入bean，转化为Node
      *
      * @param datas
      * @param defaultExpandLevel
@@ -26,8 +27,7 @@ public class TreeHelper {
      * @throws IllegalArgumentException
      * @throws IllegalAccessException
      */
-    public static <T> List<Node> getSortedNodes(List<T> datas,
-                                                int defaultExpandLevel) throws IllegalArgumentException,
+    public static <T> List<Node> getSortedNodes(List<T> datas, int defaultExpandLevel) throws IllegalArgumentException,
             IllegalAccessException {
         List<Node> result = new ArrayList<Node>();
         //将用户数据转化为List<Node>以及设置Node间关系
@@ -105,6 +105,7 @@ public class TreeHelper {
 
         /**
          * 设置Node间，父子关系;让每两个节点都比较一次，即可设置其中的关系
+         * 耗时操作
          */
         for (int i = 0; i < nodes.size(); i++) {
             Node n = nodes.get(i);
@@ -138,10 +139,9 @@ public class TreeHelper {
 
     /**
      * 把一个节点上的所有的内容都挂上去
+     * 层级过深 内存溢出？
      */
-    private static void addNode(List<Node> nodes, Node node,
-                                int defaultExpandLeval, int currentLevel) {
-
+    private static void addNode(List<Node> nodes, Node node, int defaultExpandLeval, int currentLevel) {
         nodes.add(node);
         if (defaultExpandLeval >= currentLevel) {
             node.setExpand(true);

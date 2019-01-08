@@ -23,14 +23,11 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * author: Ivan Zhang
  * 高德地图，图标平滑移动功能Demo
  */
 public class MainActivity extends AppCompatActivity {
-
     MapView mMapView = null;
     AMap aMap;
-
 
     //经度
     private double lng = 0.0;

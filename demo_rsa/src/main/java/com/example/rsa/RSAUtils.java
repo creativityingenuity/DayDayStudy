@@ -20,6 +20,9 @@ import java.security.spec.X509EncodedKeySpec;
 
 import javax.crypto.Cipher;
 
+/**
+ * rsa非对称加密工具类
+ */
 public final class RSAUtils {
     private static String RSA = "RSA";
 

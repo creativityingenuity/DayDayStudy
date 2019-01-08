@@ -7,9 +7,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import yt.myutils.Utils;
 import yt.myutils.core.AppUtils;
 
-/**
- * Created by ${zhangyuanchao} on 2017/12/7.
- */
+
 
 public class MyApplication extends Application {
     private static MyApplication instance;

@@ -1,3 +1,3 @@
-include ':app',  ':lib_utils', ':lib_statusbar', ':demo_oneactivity_multifragment', ':demo_view', ':demo_uifix', ':amapsmoothmarker', ':demo_net', ':yttreeview', ':demo_kotlin'
+include ':app',  ':lib_utils', ':lib_statusbar', ':demo_oneactivity_multifragment', ':demo_view', ':demo_uifix', ':amapsmoothmarker',  ':yttreeview', ':demo_kotlin', ':amapdemo'
 include ':demo_rsa'
 include ':demo_aes'

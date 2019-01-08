@@ -10,6 +10,9 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+/**
+ * aes加密工具类
+ */
 public class AesUtils {
 
     /**
@@ -64,10 +67,8 @@ public class AesUtils {
         return strResult;
     }
 
-    /*
-     *
+    /**
      * 解密数据
-     *
      */
     public static String decrypt(String toDecrypt) throws Exception {
         byte[] data = Base64.decode(toDecrypt, 0);

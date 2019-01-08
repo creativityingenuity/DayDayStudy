@@ -25,6 +25,9 @@ import com.yt.daydaystudy.demo_recyclerview.DemoAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 沉浸式状态栏
+ */
 public class CJSActivity extends AppCompatActivity {
 
     @Override
