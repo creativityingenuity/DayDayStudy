@@ -63,10 +63,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initMap() {
-        if (mAMap == null) {
-            mAMap = mMapView.getMap();
-            mAMapUiSettings = mAMap.getUiSettings();
-        }
+        mAMap = mMapView.getMap();
+        mAMapUiSettings = mAMap.getUiSettings();
         //初始化定位
         mLocationClient = new AMapLocationClient(getApplicationContext());
         AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
@@ -141,11 +139,11 @@ public class MainActivity extends AppCompatActivity {
         options.color(Color.argb(255, 138, 43, 226));
         options.addAll(latLngs);
         polyline = mAMap.addPolyline(options);
-//        设置marker位置
-//        Marker marker = allPlaneMarkerList.get(allAircraftIds.indexOf(clickedPlaneId));
-//        LatLng latLng = latLngs.get(latLngs.size() - 1);
-//        marker.setPosition(latLng);
-//        marker.setAnchor(0.5f, 0.6f);
+        //        设置marker位置
+        //        Marker marker = allPlaneMarkerList.get(allAircraftIds.indexOf(clickedPlaneId));
+        //        LatLng latLng = latLngs.get(latLngs.size() - 1);
+        //        marker.setPosition(latLng);
+        //        marker.setAnchor(0.5f, 0.6f);
     }
 
     /**
