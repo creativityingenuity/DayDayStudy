@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
+
 abstract class BaseFragment : Fragment() {
     var mActivity: Context? = null
     var rootView: View? = null
@@ -17,7 +18,7 @@ abstract class BaseFragment : Fragment() {
         mActivity = context
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         if (rootView == null) {
             rootView = inflater?.inflate(getLayoutId(), container, false)
@@ -26,7 +27,7 @@ abstract class BaseFragment : Fragment() {
     }
 
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         isViewInitiated = true
         init(savedInstanceState)
@@ -51,7 +52,6 @@ abstract class BaseFragment : Fragment() {
         return false
     }
 
-    /*子类实现*/
     abstract fun getLayoutId(): Int
 
     abstract fun loadData()

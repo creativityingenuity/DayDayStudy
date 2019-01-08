@@ -1,24 +1,21 @@
 package com.practice.eyepetizer.mvp.ui.activity
 
-import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
 import cn.yt.demo_kotlin.R
-import com.gyf.barlibrary.ImmersionBar
-import com.practice.eyepetizer.globle.showToast
 import com.practice.eyepetizer.mvp.ui.fragment.FindFragment
 import com.practice.eyepetizer.mvp.ui.fragment.HomeFragment
 import com.practice.eyepetizer.mvp.ui.fragment.HotFragment
 import com.practice.eyepetizer.mvp.ui.fragment.MineFragment
-import com.tt.lvruheng.eyepetizer.search.SEARCH_TAG
 import com.tt.lvruheng.eyepetizer.search.SearchFragment
-import kotlinx.android.synthetic.main.activity_main2.*
-import java.util.*
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+    override fun onClick(p0: View?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     var homeFragment: HomeFragment? = null
     var findFragment: FindFragment? = null
     var hotFragemnt: HotFragment? = null
@@ -29,20 +26,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
-        ImmersionBar.with(this).transparentBar().barAlpha(0.3f).fitsSystemWindows(true).init()
+//        ImmersionBar.with(this).transparentBar().barAlpha(0.3f).fitsSystemWindows(true).init()
         val window = window
         var attributes = window.attributes
         attributes.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
         window.attributes = attributes
 
-        setRadioButton()
-        initToolBar()
-        initFragment(savedInstanceState)
+//        setRadioButton()
+//        initToolBar()
+//        initFragment(savedInstanceState)
     }
-
-    /**
+/*
+    *//**
      * 初始化fragment
-     */
+     *//*
     private fun initFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
             homeFragment = HomeFragment()
@@ -94,9 +91,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    /**
+    *//**
      * 获取今天是周几
-     */
+     *//*
     private fun getToday(): String {
         var list = arrayOf("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
         var date: Date = Date()
@@ -196,5 +193,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             return true
         }
         return super.onKeyDown(keyCode, event)
-    }
+    }*/
 }
