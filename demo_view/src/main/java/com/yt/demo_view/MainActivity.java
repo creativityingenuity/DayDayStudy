@@ -8,6 +8,9 @@ import android.view.View;
 import com.yt.demo_view.lockview.LockScreenView;
 import com.yt.demo_view.treeview.zj.TreeViewActivity1;
 
+/**
+ * 部分自定义viewdemo
+ */
 public class MainActivity extends AppCompatActivity {
 
     private LockScreenView ls;
