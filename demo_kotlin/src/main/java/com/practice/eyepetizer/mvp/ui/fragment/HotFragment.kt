@@ -12,7 +12,15 @@ class HotFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun loadData() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
+    companion object {
+        fun getInstance(title: String): HotFragment {
+            val fragment = HotFragment()
+            val bundle = Bundle()
+            fragment.arguments = bundle
+//            fragment.mTitle = title
+            return fragment
+        }
+    }
     override fun init(savedInstanceState: Bundle?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

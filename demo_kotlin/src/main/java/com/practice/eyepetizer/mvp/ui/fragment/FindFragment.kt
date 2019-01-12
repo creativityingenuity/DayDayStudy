@@ -2,6 +2,7 @@ package com.practice.eyepetizer.mvp.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
+import com.practice.eyepetizer.globle.Constants
 import com.tt.lvruheng.eyepetizer.ui.fragment.BaseFragment
 
 /**
@@ -13,6 +14,18 @@ class FindFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    /**
+     * 类似静态操作
+     */
+    companion object {
+        fun getInstance(title : String) : FindFragment{
+            val fragment = FindFragment()
+            val bundle = Bundle()
+            bundle.putString(Constants.FRAGMENT_TITLE,title)
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
     override fun loadData() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

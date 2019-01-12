@@ -41,7 +41,7 @@ class SplashActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks 
         val animationSet = AnimationSet(true)
         animationSet.addAnimation(alphaAnimation)
         animationSet.addAnimation(scaleAnimation)
-        animationSet.duration = 3000
+        animationSet.duration = 1500
         iv_icon_splash.startAnimation(animationSet)
         animationSet.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationRepeat(p0: Animation?) {

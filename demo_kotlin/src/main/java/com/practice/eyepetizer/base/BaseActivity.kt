@@ -26,6 +26,8 @@ abstract class BaseActivity : AppCompatActivity() {
         initView()
         start()
         initListener()
+
+
     }
 
     private fun initListener() {

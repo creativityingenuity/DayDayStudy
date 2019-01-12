@@ -7,4 +7,5 @@ package com.practice.eyepetizer.globle;
 
 public interface Constants {
     String CURRTABINDEX = "currTabIndex";
+    String FRAGMENT_TITLE = "fragment_title";
 }
