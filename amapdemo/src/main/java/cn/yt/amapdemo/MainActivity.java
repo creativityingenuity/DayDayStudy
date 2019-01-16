@@ -147,6 +147,53 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * 持续的更新轨迹
+     */
+    public void drawPlaneLine() {
+//        if (isRouteOn) {// 航线显示开关
+//            if (planePolyline != null) {
+//                drawPlaneLineSub = Observable.just(planeId).map(new Func1<String, LatLng>() {
+//                    @Override
+//                    public LatLng call(String planeId) {
+//                        return PlaneMemoryCache.getLastPlaneLatlng(planeId);   //获取最后一个点 坐标
+//                    }
+//                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<LatLng>() {
+//                    @Override
+//                    public void call(LatLng la) {
+//                        //todo 不为null 去持续更新最新的点
+//                        if (planePolyline != null) {
+//                            List<LatLng> list = planePolyline.getPoints();
+//                            list.add(la);
+//                            planePolyline.setPoints(list);
+//                        }
+//                    }
+//                });
+//            } else {
+//                drawPlaneLineSub = Observable.just(planeId).map(new Func1<String, List<LatLng>>() {
+//                    @Override
+//                    public List<LatLng> call(String planeId) {
+//                    }
+//                }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+//                        .subscribe(new Observer<List<LatLng>>() {
+//                            @Override
+//                            public void onNext(List<LatLng> list) {
+//                                //todo 新建航线
+//                                if (list != null && list.size() > 0 && aMap != null) {
+//                                    PolylineOptions options = new PolylineOptions();
+//                                    options.width(FLY_LINE_WIDTH);// 设置宽度
+//                                    options.color(Color.argb(255, 138, 43, 226));//#8A2BE2
+//                                    options.addAll(list);
+//                                    hidePlaneLine();
+//                                    planePolyline = aMap.addPolyline(options);
+//                                }
+//                            }
+//                        });
+//            }
+//
+//        }
+    }
+
+    /**
      * 移除轨迹
      */
     private void hidePlaneLine() {

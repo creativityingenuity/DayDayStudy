@@ -3,6 +3,7 @@ package com.practice.eyepetizer.mvp.ui.fragment
 import android.os.Bundle
 import cn.yt.demo_kotlin.R
 import com.practice.eyepetizer.globle.Constants
+import com.practice.eyepetizer.mvp.presenter.HomePresenter
 import com.tt.lvruheng.eyepetizer.ui.fragment.BaseFragment
 
 /**
@@ -11,6 +12,7 @@ import com.tt.lvruheng.eyepetizer.ui.fragment.BaseFragment
  * 首页
  */
 class HomeFragment : BaseFragment() {
+    val mPresenter by lazy { HomePresenter() }
     override fun getLayoutId(): Int = R.layout.home_fragment
 
 
