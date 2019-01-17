@@ -1,5 +1,8 @@
 package com.practice.eyepetizer.mvp.base
 
 
-interface BaseView<in T> {
+interface BaseView {
+    fun showLoading()
+
+    fun dismissLoading()
 }

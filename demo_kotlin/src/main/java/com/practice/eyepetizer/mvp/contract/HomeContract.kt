@@ -10,10 +10,21 @@ import com.tt.lvruheng.eyepetizer.mvp.model.bean.HomeBean
  * Created by YT on 2018/12/17.
  */
 interface HomeContract {
-    interface Presenter : BasePresenter {
-        fun requestData()
+    interface Presenter : BasePresenter<View> {
+        /**
+         * 获取首页精选数据
+         */
+        fun requestHomeData(num: Int)
+
+        /**
+         * 加载更多数据
+         */
+        fun loadMoreData()
     }
-    interface View : BaseView<Presenter> {
-        fun setData(bean : HomeBean)
+    interface View : BaseView {
+        /**
+         * 设置第一次请求的数据
+         */
+        fun setHomeData(homeBean: HomeBean)
     }
 }
