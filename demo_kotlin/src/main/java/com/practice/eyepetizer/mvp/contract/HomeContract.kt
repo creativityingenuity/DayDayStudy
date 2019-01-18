@@ -2,6 +2,7 @@ package com.practice.eyepetizer.mvp.contract
 
 import com.practice.eyepetizer.mvp.base.IBaseView
 import com.practice.eyepetizer.mvp.base.IPresenter
+import com.practice.eyepetizer.mvp.model.bean.HomeBean
 
 
 /**
@@ -19,11 +20,18 @@ interface HomeContract {
          * 加载更多数据
          */
         fun loadMoreData()
+
+
     }
     interface View : IBaseView {
         /**
          * 设置第一次请求的数据
          */
         fun setHomeData(homeBean: HomeBean)
+
+        /**
+         * 显示错误信息
+         */
+        fun showError(msg: String,errorCode:Int)
     }
 }
