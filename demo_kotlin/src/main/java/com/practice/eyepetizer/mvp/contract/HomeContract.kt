@@ -1,8 +1,7 @@
 package com.practice.eyepetizer.mvp.contract
 
-import com.practice.eyepetizer.mvp.base.BasePresenter
-import com.practice.eyepetizer.mvp.base.BaseView
-import com.tt.lvruheng.eyepetizer.mvp.model.bean.HomeBean
+import com.practice.eyepetizer.mvp.base.IBaseView
+import com.practice.eyepetizer.mvp.base.IPresenter
 
 
 /**
@@ -10,7 +9,7 @@ import com.tt.lvruheng.eyepetizer.mvp.model.bean.HomeBean
  * Created by YT on 2018/12/17.
  */
 interface HomeContract {
-    interface Presenter : BasePresenter<View> {
+    interface Presenter : IPresenter<View> {
         /**
          * 获取首页精选数据
          */
@@ -21,7 +20,7 @@ interface HomeContract {
          */
         fun loadMoreData()
     }
-    interface View : BaseView {
+    interface View : IBaseView {
         /**
          * 设置第一次请求的数据
          */

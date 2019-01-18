@@ -2,11 +2,14 @@ package com.practice.eyepetizer.mvp.ui.fragment
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import cn.yt.demo_kotlin.R
 import com.practice.eyepetizer.globle.Constants
 import com.practice.eyepetizer.mvp.contract.HomeContract
 import com.practice.eyepetizer.mvp.presenter.HomePresenter
-import com.tt.lvruheng.eyepetizer.mvp.model.bean.HomeBean
+import com.practice.eyepetizer.utils.StatusBarUtil
+import com.scwang.smartrefresh.header.MaterialHeader
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import com.tt.lvruheng.eyepetizer.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.home_fragment.*
 import java.text.SimpleDateFormat
@@ -54,16 +57,48 @@ class HomeFragment : BaseFragment(), HomeContract.View {
      */
     override fun init(savedInstanceState: Bundle?) {
         mPresenter.attachView(this)
-        //是否下拉Header的时候向下平移列表或者内容
-        mRefreshLayout.setEnableHeaderTranslationContent(true)
+        mRefreshLayout.setRefreshHeader(ClassicsHeader(activity))
+        //下拉刷新
         mRefreshLayout.setOnRefreshListener {
             isRefresh = true
             mPresenter.requestHomeData(num)
+            mRefreshLayout.finishRefresh(1000)
+        }
+        //加载更多
+        mRefreshLayout.setOnLoadmoreListener {
+            mRefreshLayout.finishLoadmore(2000)//传入false表示加载失败
+        }
+
+
+        //recyclerview 滚动效果
+        mRecyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+
+        })
+
+        iv_search.setOnClickListener {
+            openSearchActivity()
+        }
+        mLayoutStatusView = multipleStatusView
+
+        //状态栏透明和间距处理
+        activity?.let {
+            StatusBarUtil.darkMode(it)
+            StatusBarUtil.setPaddingSmart(it, toolbar)
         }
     }
 
-    override fun loadData() {
+    /**
+     * 打开搜索界面
+     */
+    private fun openSearchActivity() {
 
+    }
+
+    /**
+     * 加载数据
+     */
+    override fun loadData() {
+        mPresenter.requestHomeData(num)
     }
 
 

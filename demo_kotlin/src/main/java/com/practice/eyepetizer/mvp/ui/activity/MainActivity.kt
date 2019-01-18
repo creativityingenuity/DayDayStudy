@@ -10,7 +10,6 @@ import com.flyco.tablayout.listener.OnTabSelectListener
 import com.practice.eyepetizer.base.BaseActivity
 import com.practice.eyepetizer.globle.Constants
 import com.practice.eyepetizer.globle.showToast
-import com.practice.eyepetizer.mvp.model.bean.TabEntity
 import com.practice.eyepetizer.mvp.ui.fragment.FindFragment
 import com.practice.eyepetizer.mvp.ui.fragment.HomeFragment
 import com.practice.eyepetizer.mvp.ui.fragment.HotFragment

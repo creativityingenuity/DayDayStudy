@@ -1,6 +1,5 @@
 package com.tt.lvruheng.eyepetizer.ui.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -22,12 +21,7 @@ abstract class BaseFragment : Fragment() {
      * 多种状态的 View 的切换
      */
     protected var mLayoutStatusView: MultipleStatusView? = null
-    var mActivity: Context? = null
     var rootView: View? = null
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        mActivity = context
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
