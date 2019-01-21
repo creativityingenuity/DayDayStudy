@@ -21,7 +21,7 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
     }
     private var bannerHomeBean: HomeBean? = null
 
-    private var nextPageUrl:String?=null     //加载首页的Banner 数据+一页数据合并后，nextPageUrl没 add
+    private var nextPageUrl: String? = null     //加载首页的Banner 数据+一页数据合并后，nextPageUrl没 add
     /**
      * 请求全部数据
      */
@@ -29,14 +29,15 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
         //检测是否绑定view
         checkViewAttach()
         mRootView?.showLoading()
-       val disposable =  homeModel.requestHomeData(num)
-                .flatMap({homeBean-> // Lambda表达式总是被大括号括着  其参数(如果存在)在 -> 之前声明(参数类型可以省略)  函数体(如果存在)在 -> 后面。
+        val disposable = homeModel.requestHomeData(num)
+                .flatMap({ homeBean ->
+                    // Lambda表达式总是被大括号括着  其参数(如果存在)在 -> 之前声明(参数类型可以省略)  函数体(如果存在)在 -> 后面。
 
                     var bannerItemList = homeBean.issueList[0].itemList
 
-                    bannerItemList.filter {item ->
-                        item.type == "banner2"|| item.type == "horizontalScrollCard"
-                    }.forEach { item->
+                    bannerItemList.filter { item ->
+                        item.type == "banner2" || item.type == "horizontalScrollCard"
+                    }.forEach { item ->
                         //移除item
                         bannerItemList.remove(item)
                     }
@@ -44,39 +45,68 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
 
                     homeModel.loadMoreData(homeBean.nextPageUrl)
                 })
-               .subscribe({ homeBean ->
-                   mRootView?.apply {
-                       dismissLoading()
+                .subscribe({ homeBean ->
+                    mRootView?.apply {
+                        dismissLoading()
 
-                       nextPageUrl = homeBean.nextPageUrl
-                       //过滤掉 Banner2(包含广告,等不需要的 Type), 具体查看接口分析
-                       val newBannerItemList = homeBean.issueList[0].itemList
+                        nextPageUrl = homeBean.nextPageUrl
+                        //过滤掉 Banner2(包含广告,等不需要的 Type), 具体查看接口分析
+                        val newBannerItemList = homeBean.issueList[0].itemList
 
-                       newBannerItemList.filter { item ->
-                           item.type == "banner2"||item.type=="horizontalScrollCard"
-                       }.forEach { item->
-                           //移除item
-                           newBannerItemList.remove(item)
-                       }
+                        newBannerItemList.filter { item ->
+                            item.type == "banner2" || item.type == "horizontalScrollCard"
+                        }.forEach { item ->
+                            //移除item
+                            newBannerItemList.remove(item)
+                        }
 
-                       //重新赋值banner长度
-                       bannerHomeBean!!.issueList[0].count = bannerHomeBean!!.issueList[0].itemList.size
+                        //重新赋值banner长度
+                        bannerHomeBean!!.issueList[0].count = bannerHomeBean!!.issueList[0].itemList.size
 
-                       //赋值过滤后的数据 + banner 数据
-                       bannerHomeBean?.issueList!![0].itemList.addAll(newBannerItemList)
+                        //赋值过滤后的数据 + banner 数据
+                        bannerHomeBean?.issueList!![0].itemList.addAll(newBannerItemList)
 
-                       setHomeData(bannerHomeBean!!)
-                   }
-               }, {t ->
-                   mRootView?.apply {
-                       dismissLoading()
-                       mRootView?.showError(ExceptionHandle.handleException(t), ExceptionHandle.errorCode)
-                   }
-               })
+                        setHomeData(bannerHomeBean!!)
+                    }
+                }, { t ->
+                    mRootView?.apply {
+                        dismissLoading()
+                        mRootView?.showError(ExceptionHandle.handleException(t), ExceptionHandle.errorCode)
+                    }
+                })
+        addSubscription(disposable)
     }
 
+    /**
+     * 加载更多
+     */
     override fun loadMoreData() {
+        val disposable  = nextPageUrl?.let {
+            homeModel.loadMoreData(it)
+                    .subscribe({ homeBean ->
+                        mRootView?.apply {
+                            //过滤掉 Banner2(包含广告,等不需要的 Type), 具体查看接口分析
+                            val newItemList = homeBean.issueList[0].itemList
 
+                            newItemList.filter { item ->
+                                item.type == "banner2" || item.type == "horizontalScrollCard"
+                            }.forEach { item ->
+                                //移除 item
+                                newItemList.remove(item)
+                            }
+
+                            nextPageUrl = homeBean.nextPageUrl
+                            setMoreData(newItemList)
+                        }
+                    }, { t ->
+                        mRootView?.apply {
+                            showError(ExceptionHandle.handleException(t), ExceptionHandle.errorCode)
+                        }
+                    })
+        }
+        if (disposable != null) {
+            addSubscription(disposable)
+        }
     }
 
 }

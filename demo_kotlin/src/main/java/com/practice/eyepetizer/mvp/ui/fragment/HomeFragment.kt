@@ -1,12 +1,23 @@
 package com.practice.eyepetizer.mvp.ui.fragment
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
+import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import cn.yt.demo_kotlin.R
+import com.orhanobut.logger.Logger
 import com.practice.eyepetizer.globle.Constants
+import com.practice.eyepetizer.globle.newIntent
+import com.practice.eyepetizer.globle.showToast
 import com.practice.eyepetizer.mvp.contract.HomeContract
+import com.practice.eyepetizer.mvp.model.bean.HomeBean
 import com.practice.eyepetizer.mvp.presenter.HomePresenter
+import com.practice.eyepetizer.mvp.ui.activity.SearchActivity
+import com.practice.eyepetizer.mvp.ui.adapter.HomeAdatper
+import com.practice.eyepetizer.net.exception.ErrorStatus
 import com.practice.eyepetizer.utils.StatusBarUtil
 import com.scwang.smartrefresh.header.MaterialHeader
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
@@ -29,8 +40,10 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     /**
      * 是否刷新
      */
-    private var isRefresh :Boolean = false
-    private var mMaterialHeader: MaterialHeader? = null
+    private var isRefresh: Boolean = false
+    private var loadingMore: Boolean = false
+    private var mHomeAdapter: HomeAdatper? = null
+
     override fun getLayoutId(): Int = R.layout.home_fragment
 
     companion object {
@@ -43,7 +56,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         }
     }
 
-    //todo ?
     private val linearLayoutManager by lazy {
         LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
     }
@@ -71,7 +83,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
 
         //recyclerview 滚动效果
-        mRecyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+        mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
         })
 
@@ -91,7 +103,7 @@ class HomeFragment : BaseFragment(), HomeContract.View {
      * 打开搜索界面
      */
     private fun openSearchActivity() {
-
+       activity?.newIntent<SearchActivity>()
     }
 
     /**
@@ -102,12 +114,49 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
 
+    override fun showError(msg: String, errorCode: Int) {
+        showToast(msg)
+        if (errorCode == ErrorStatus.NETWORK_ERROR) {
+            mLayoutStatusView?.showNoNetwork()
+        } else {
+            mLayoutStatusView?.showError()
+        }
+    }
+
     override fun showLoading() {
+        if (!isRefresh) {
+            isRefresh = false
+            mLayoutStatusView?.showLoading()
+        }
     }
 
     override fun dismissLoading() {
+        mRefreshLayout.finishRefresh()
     }
 
     override fun setHomeData(homeBean: HomeBean) {
+        mLayoutStatusView?.showContent()
+        Logger.d(homeBean)
+
+        //adapter
+        mHomeAdapter = activity?.let { HomeAdatper(it, homeBean.issueList[0].itemList) }
+        mHomeAdapter?.setBannerSize(homeBean.issueList[0].count)
+        mRecyclerView.adapter = mHomeAdapter
+        mRecyclerView.layoutManager = linearLayoutManager
+        mRecyclerView.itemAnimator = DefaultItemAnimator()
+    }
+
+    override fun setMoreData(itemList: ArrayList<HomeBean.Issue.Item>) {
+        loadingMore = true
+        mHomeAdapter?.addItemData(itemList)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mPresenter.detachView()
+    }
+
+    fun getColor(colorId: Int): Int {
+        return resources.getColor(colorId)
     }
 }
