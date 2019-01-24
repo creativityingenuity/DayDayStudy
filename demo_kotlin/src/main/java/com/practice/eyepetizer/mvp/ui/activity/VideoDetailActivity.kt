@@ -23,5 +23,6 @@ class VideoDetailActivity : BaseActivity() {
     }
 
     override fun start() {
+
     }
 }
