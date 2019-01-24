@@ -27,7 +27,6 @@ android {
         renderscriptSupportModeEnabled true    // Enable RS support
 
         ndk {
-
             //APP的build.gradle设置支持的SO库架构
             abiFilters 'armeabi', 'armeabi-v7a', 'x86'
         }
@@ -43,6 +42,8 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             zipAlignEnabled true
+            // 移除无用的resource文件
+//            shrinkResources true
         }
     }
     // 自定义输出配置
@@ -58,13 +59,12 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     //kotlin 支持库
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     // Support库
     implementation rootProject.ext.supportLibs
     //运行时权限
-    implementation'pub.devrel:easypermissions:1.2.0'
+    implementation 'pub.devrel:easypermissions:1.2.0'
     //多种状态view
     implementation project(':multiple-status-view')
     // 底部菜单
@@ -93,4 +93,5 @@ dependencies {
     implementation(rootProject.ext.glideOkhttp) {
         exclude group: 'glide-parent'
     }
+    implementation files('libs/tbs_sdk_thirdapp_v3.6.0.1315_43612_sharewithdownload_withoutGame_obfs_20180718_102847.jar')
 }

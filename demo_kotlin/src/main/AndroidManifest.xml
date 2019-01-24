@@ -16,6 +16,9 @@
     <!-- SD 卡读写权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 硬件加速对X5视频播放非常重要，建议开启 -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -33,7 +36,11 @@
             </intent-filter>
         </activity>
         <!-- 主页面 -->
-        <activity android:name="com.practice.eyepetizer.mvp.ui.activity.MainActivity"></activity>
+        <activity android:name="com.practice.eyepetizer.mvp.ui.activity.MainActivity"/>
+        <!--观看历史-->
+        <activity android:name="com.practice.eyepetizer.mvp.ui.activity.WatchHistoryActivity"/>
+        <!--个人主页-->
+        <activity android:name="com.practice.eyepetizer.mvp.ui.activity.PersonalHomepageActivity"/>
     </application>
 
 </manifest>
