@@ -41,6 +41,8 @@
         <activity android:name="com.practice.eyepetizer.mvp.ui.activity.WatchHistoryActivity"/>
         <!--个人主页-->
         <activity android:name="com.practice.eyepetizer.mvp.ui.activity.PersonalHomepageActivity"/>
+        <!--播放视频界面-->
+        <activity android:name="com.practice.eyepetizer.mvp.ui.activity.VideoDetailActivity"/>
     </application>
 
 </manifest>

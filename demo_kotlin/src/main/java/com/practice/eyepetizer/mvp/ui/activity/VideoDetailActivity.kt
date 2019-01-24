@@ -1,5 +1,6 @@
 package com.practice.eyepetizer.mvp.ui.activity
 
+import cn.yt.demo_kotlin.R
 import com.practice.eyepetizer.base.BaseActivity
 
 /**
@@ -13,19 +14,14 @@ class VideoDetailActivity : BaseActivity() {
         const val TRANSITION = "TRANSITION"
     }
 
-    override fun getLayoutId(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getLayoutId(): Int  = R.layout.activity_video_detail
 
     override fun initData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun initView() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun start() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
