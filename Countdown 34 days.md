@@ -66,6 +66,75 @@ System.out.println("result = " + fun("Smart"));
 >10.写出二分搜索树前中后序遍历中的其中一个
 >11.实现一个队列，并能记录队列中最大的数。
 ##Android
+>Android中的内存泄漏和内存溢出有什么区别？
+
+* 内存溢出是指程序在申请内存的时候，没有足够的内存可以分配，导致Out Of Memory错误，也就是OOM。
+* 内存泄漏：在内存应该被释放的时候，却得不到及时的释放，就会一直占用内存，造成内存泄漏。随着内存泄漏的堆积，可用的内存空间越来越少，最后会导致内存溢出。
+
+导致内存泄漏有很多原因，最常见的有内部类的使用，因为内部类持有外部引用。还有就是对Activity Context的使用，以及对bitnmap,io,cursor等的资源释放
+
+>Activity有几种启动模式？有什么区别？
+
+Activity启动有4种模式，区别如下：
+
+1. standard 标准启动模式
+	* 默认的启动模式，每次启动activity都会创建新的实例。
+2. singletop 栈顶复用模式  =适合接收通知启动的内容显示页面
+	* 当栈顶有将要开启的Activity时，会复用这个Activity，同时这个activity的onNewIntent方法会被回调。这个activity的onCreate,OnStart方法不会被调用，因为它没有发生改变。若是栈顶没有，那么就会重新创建
+	* 应用场景：**适用于接收到消息后显示的界面**。例如：QQ接收到消息后会弹出activity，但如果一次来10条消息，总不能一次弹出10个activity。	
+			
+3. **singetask** 栈内复用模式，在当前任务栈里面只能有一个实例存在 =适合作为程序入口点
+
+	* 当一个启动模式为singleTask的activityA请求启动后，系统**会先寻找是否存在A想要的任务栈**（在系统中查找属性值affinity等于它的属性值taskAffinity的Task存在），如果不存在，就重新创建一个任务栈，然后创建A的实例并将A放到栈中。如果存在A所需的任务栈，这时要看栈中有是否有要开启的activityA，如果有则直接复用并删除A上面的activity，将A移动到栈顶，同singletop一样，也会回调这个activity的onNewIntent方法。如果没有实例，则创建A实例并压入栈中
+
+	* 现在有两个任务栈，前台任务栈中有BA，后台任务栈中有DC，假设DC启动启动模式都为singleTask。现在请求启动D，那么整个后台任务栈都会被切到前台，这时候前台任务栈为DCBA，当按back键时，前台栈中activity会一一出栈；如果请求启动C，那么情况就不一样了，会把D删除,C切换到前台。（具体看图——singleTask启动模式特例.pptx）
+			
+	* **所以这种启动模式通常可以用来退出整个应用程序。**。将主activity设为singleTask,然后在要退出的activity中转到主Activity，从而将主Activity上的其他activity全部清除，然后在主Activity中的onNewIntent()中加上finish(),将最后一个activity结束。
+	
+4. singleInstance 单实例模式，可以看作加强版singleTask模式
+
+	* activity会开启一个新的任务栈，并且这个任务栈里面只有一个实例存在。
+	* 这种启动模式和浏览器的工作原理类似。当多个程序访问浏览器时，如果浏览器没有打开，则打开浏览器，否则会在当前打开的浏览器中访问。举个例子来说，当应用A的任务栈创建了ActivityA实例，并且其启动模式为sinleInstance，如果应用B也要激活ActivityA，则不需要创建，两个应用共享即可。
+	* 如果你要保证一个activity在整个手机操作系统里面只有一个实例存在，使用singleInstance
+	* 关于singleInstance这种启动模式还有一点需要特殊说明：
+		* 如果在一个singleInstance的activityA中通过startActivityForResult()去启动另一个activityB，那么在A中拿不到数据。因为android不允许task间互相传递数据。
+
+onNewIntent()
+
+	protected void onNewIntent(Intent intent)通过这个方法可以取出当前请求的信息
+* 第一次创建Activity A时，执行的逻辑顺序是：
+	* onCreate() ­­­>onStart()­­­>onResume()
+* 而如果使用singleTask模式第二次启动Activity A，且A处于任务栈的顶端，则执行的逻辑顺序是：
+    * onNewIntent() ­­­>onRestart> onStart>onResume()。 
+注意，getIntent()仍返回原来的意图。你可以使用setIntent来设置新的意图。
+
+>RxJava 中  flatMap 和 concatMap 有什么区别？
+
+concatMap和flatMap的功能是一样的， 将一个发射数据的Observable变换为多个Observables，然后将它们发射的数据放进一个单独的Observable。只不过最后合并Observables flatMap采用的merge，而concatMap采用的是连接(concat)。总之一句一话,他们的区别在于：concatMap是有序的，flatMap是无序的，concatMap最终输出的顺序与原序列保持一致，而flatMap则不一定，有可能出现交错。
+
+>在Activity中如何保存/恢复状态？
+
+分别调用onSaveInstanceState和onRestoreInstanceState 2个方法保存和恢复状态。
+
+>Android 中序列化有哪些方式？区别？
+
+1. Serializable（Java自带）：
+
+Serializable是序列化的意思，表示将一个对象转换成可存储或可传输的状态。序列化后的对象可以在网络上进行传输，也可以存储到本地。
+
+2. Parcelable（android 专用）：
+
+除了Serializable之外，使用Parcelable也可以实现相同的效果，
+不过不同于将对象进行序列化，Parcelable方式的实现原理是将一个完整的对象进行分解，
+而分解后的每一部分都是Intent所支持的数据类型，这样也就实现传递对象的功能了。
+区别：Parcelable比Serializable性能高，所以应用内传递数据推荐使用Parcelable,但是Parcelable不能使用在要将数据存储在磁盘上的情况，因为Parcelable不能很好的保证数据的持续性在外界有变化的情况下。尽管Serializable效率低点，但此时还是建议使用Serializable 。
+
+>Android中的显式Intent 和 隐式Intent 有什么区别？
+
+* 显式Intent：即直接指定需要打开的Activity类，可以唯一确定一个Activity，意图特别明确，所以是显式的。
+* 隐式Intent:，隐式不明确指定启动哪个Activity，而是设置Action、Data、Category，让系统来筛选出合适的Activity。
+
+
 >1.四大组件有哪些，说出你对他们在Android系统中的作用和理解。
 >2.Activity生命周期，A启动B两个页面生命周期怎么运行的，为什么会这样，生命周期为什么这么设计，你有了解过吗。
 >3.四种启动模式，内部堆栈是怎么回事，你工作中怎么使用的。
