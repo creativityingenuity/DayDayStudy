@@ -27,11 +27,10 @@ class FindFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         }
     }
     override fun loadData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun init(savedInstanceState: Bundle?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun onRefresh() {

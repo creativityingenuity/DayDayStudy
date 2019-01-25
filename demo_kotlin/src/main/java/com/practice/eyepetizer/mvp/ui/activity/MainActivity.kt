@@ -65,7 +65,6 @@ class MainActivity : BaseActivity() {
             }
 
             override fun onTabReselect(position: Int) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
             }
         })
     }
