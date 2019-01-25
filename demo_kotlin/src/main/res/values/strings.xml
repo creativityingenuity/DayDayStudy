@@ -31,4 +31,5 @@
     <string name="view_history">观看记录</string>
     <string name="feedback">意见反馈</string>
     <string name="toolbar_title">观看记录</string>
+    <string name="hot_title">人气榜</string>
 </resources>
