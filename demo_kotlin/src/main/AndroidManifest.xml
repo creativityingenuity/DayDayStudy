@@ -23,7 +23,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:name="com.hazz.kotlinmvp.GlobleApplication"
+        android:name="com.practice.eyepetizer.globle.GlobleApplication"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"

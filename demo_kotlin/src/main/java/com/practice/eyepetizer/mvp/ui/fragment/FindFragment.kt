@@ -2,8 +2,8 @@ package com.practice.eyepetizer.mvp.ui.fragment
 
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
+import com.practice.eyepetizer.base.BaseFragment
 import com.practice.eyepetizer.globle.Constants
-import com.tt.lvruheng.eyepetizer.ui.fragment.BaseFragment
 
 /**
  * Call:vipggxs@163.com

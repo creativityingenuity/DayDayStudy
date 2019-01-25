@@ -1,14 +1,12 @@
 package com.practice.eyepetizer.mvp.ui.fragment
 
-import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import cn.yt.demo_kotlin.R
 import com.orhanobut.logger.Logger
+import com.practice.eyepetizer.base.BaseFragment
 import com.practice.eyepetizer.globle.Constants
 import com.practice.eyepetizer.globle.newIntent
 import com.practice.eyepetizer.globle.showToast
@@ -19,9 +17,7 @@ import com.practice.eyepetizer.mvp.ui.activity.SearchActivity
 import com.practice.eyepetizer.mvp.ui.adapter.HomeAdatper
 import com.practice.eyepetizer.net.exception.ErrorStatus
 import com.practice.eyepetizer.utils.StatusBarUtil
-import com.scwang.smartrefresh.header.MaterialHeader
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
-import com.tt.lvruheng.eyepetizer.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.home_fragment.*
 import java.text.SimpleDateFormat
 import java.util.*

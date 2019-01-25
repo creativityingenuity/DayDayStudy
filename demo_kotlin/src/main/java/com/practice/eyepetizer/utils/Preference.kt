@@ -3,7 +3,7 @@ package com.practice.eyepetizer.utils
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
-import com.hazz.kotlinmvp.GlobleApplication
+import com.practice.eyepetizer.globle.GlobleApplication
 import java.io.*
 import kotlin.reflect.KProperty
 

@@ -1,6 +1,6 @@
 package com.practice.eyepetizer.net
 
-import com.hazz.kotlinmvp.GlobleApplication
+import com.practice.eyepetizer.globle.GlobleApplication
 import com.practice.eyepetizer.utils.AppUtils
 import com.practice.eyepetizer.utils.Preference
 import okhttp3.Cache

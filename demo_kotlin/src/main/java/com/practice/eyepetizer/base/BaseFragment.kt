@@ -1,4 +1,4 @@
-package com.tt.lvruheng.eyepetizer.ui.fragment
+package com.practice.eyepetizer.base
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

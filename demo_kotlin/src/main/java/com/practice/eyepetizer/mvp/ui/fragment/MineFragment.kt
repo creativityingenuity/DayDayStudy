@@ -4,12 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import cn.yt.demo_kotlin.R
+import com.practice.eyepetizer.base.BaseFragment
 import com.practice.eyepetizer.globle.Constants
 import com.practice.eyepetizer.globle.showToast
 import com.practice.eyepetizer.mvp.ui.activity.PersonalHomepageActivity
 import com.practice.eyepetizer.mvp.ui.activity.WatchHistoryActivity
 import com.practice.eyepetizer.utils.StatusBarUtil
-import com.tt.lvruheng.eyepetizer.ui.fragment.BaseFragment
 import kotlinx.android.synthetic.main.fragment_mine.*
 
 /**

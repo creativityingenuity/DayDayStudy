@@ -2,10 +2,9 @@ package com.practice.eyepetizer.mvp.ui.activity
 
 import android.support.v7.widget.LinearLayoutManager
 import cn.yt.demo_kotlin.R
-import com.hazz.kotlinmvp.GlobleApplication
-
 import com.practice.eyepetizer.base.BaseActivity
 import com.practice.eyepetizer.globle.Constants
+import com.practice.eyepetizer.globle.GlobleApplication
 import com.practice.eyepetizer.mvp.model.bean.HomeBean
 import com.practice.eyepetizer.mvp.ui.adapter.WatchHistoryAdapter
 import com.practice.eyepetizer.utils.StatusBarUtil

@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.support.v4.app.Fragment
 import android.widget.Toast
-import com.hazz.kotlinmvp.GlobleApplication
 
 /**
  * Call:vipggxs@163.com

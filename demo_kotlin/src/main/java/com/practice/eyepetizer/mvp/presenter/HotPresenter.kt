@@ -3,6 +3,7 @@ package com.practice.eyepetizer.mvp.presenter
 import com.practice.eyepetizer.mvp.base.BasePresenter
 import com.practice.eyepetizer.mvp.contract.HotContract
 import com.practice.eyepetizer.mvp.model.HotModel
+import com.practice.eyepetizer.net.exception.ExceptionHandle
 
 /**
  * Call:vipggxs@163.com
@@ -14,9 +15,14 @@ class HotPresenter : BasePresenter<HotContract.View>(),HotContract.Presenter {
 
     override fun getTabInfo() {
         checkViewAttach()
-        hotModel.getTabInfo()
-                .subscribe({
-
+        mRootView?.showLoading()
+        var disposable = hotModel.getTabInfo()
+                .subscribe({ infoBean ->
+                    mRootView?.setTabInfo(infoBean)
+                }, {
+                    //异常处理
+                    mRootView?.showError(ExceptionHandle.handleException(it), ExceptionHandle.errorCode)
                 })
+        addSubscription(disposable)
     }
 }

@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp
+package com.practice.eyepetizer.globle
 
 import android.app.Application
 import android.content.Context
