@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     protected ArrayList<T> mData;
     protected int mLayoutId;
-    private MultipleType<T> mMultipleType
+    private MultipleType<T> mMultipleType;
     private OnItemClickListener mItemClickListener;
     private OnItemLongClickListener mItemLongClickListener;
 
