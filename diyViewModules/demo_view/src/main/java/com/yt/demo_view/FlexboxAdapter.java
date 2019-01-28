@@ -15,6 +15,6 @@ public class FlexboxAdapter extends CommonAdapter<String> {
 
     @Override
     protected void bindData(ViewHolder holder, String s, int position) {
-        holder.setText(R.id.)
+
     }
 }
