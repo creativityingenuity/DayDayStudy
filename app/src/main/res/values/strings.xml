@@ -8,5 +8,6 @@
         <item>ArouterDemo</item>
         <item>toolbar</item>
         <item>kotlin</item>
+        <item>DialogFragment</item>
     </array>
 </resources>

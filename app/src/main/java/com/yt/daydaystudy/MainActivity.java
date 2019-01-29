@@ -1,7 +1,6 @@
 package com.yt.daydaystudy;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,7 @@ import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.yt.daydaystudy.demo_arouter.ArouterDemoActivity;
 import com.yt.daydaystudy.demo_cjs.CJSActivity;
+import com.yt.daydaystudy.demo_fragmentdialog.DemoDialog;
 import com.yt.daydaystudy.demo_greendao.GreenDaoActivity;
 import com.yt.daydaystudy.demo_statusbarcolor.StatusBarActivity;
 import com.yt.daydaystudy.demo_takephoto.PhotoUploadActivity;
@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements CommonAdapter.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         //使用FlexboxLayoutManager搭配RecyclerView实现流式布局
         mRecyclerView = findViewById(R.id.rv);
         FlexboxLayoutManager flexBoxManager = new FlexboxLayoutManager(this);
@@ -70,6 +69,10 @@ public class MainActivity extends AppCompatActivity implements CommonAdapter.OnI
                 break;
             case 5:
 //                KotlinDemoActivity.startAction(this);
+                break;
+            case 6:
+                DemoDialog dialog = DemoDialog.newInstance("alert");
+                dialog.show(getSupportFragmentManager(),"");
                 break;
         }
     }
