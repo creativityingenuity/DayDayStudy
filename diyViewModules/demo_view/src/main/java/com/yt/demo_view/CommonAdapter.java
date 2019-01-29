@@ -31,7 +31,7 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<BaseViewHold
     /**
      * 多布局使用的构造
      */
-    public CommonAdapter(ArrayList<T> data, int layoutId,MultipleType multipleType) {
+    public CommonAdapter(ArrayList<T> data, int layoutId, MultipleType multipleType) {
         this.mData = data;
         this.mLayoutId = layoutId;
         this.mMultipleType = multipleType;
@@ -39,10 +39,10 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<BaseViewHold
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(mMultipleType!=null){
+        if (mMultipleType != null) {
             mLayoutId = viewType;
         }
-        return new BaseViewHolder(LayoutInflater.from(parent.getContext()).inflate(mLayoutId, parent,false));
+        return new BaseViewHolder(LayoutInflater.from(parent.getContext()).inflate(mLayoutId, parent, false));
     }
 
     @Override
@@ -75,8 +75,8 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<BaseViewHold
      */
     @Override
     public int getItemViewType(int position) {
-        if(mData!=null&&mData.size()>0){
-            return mMultipleType.getLayoutId(mData.get(position),position);
+        if (mData != null && mData.size() > 0&&mMultipleType!=null) {
+            return mMultipleType.getLayoutId(mData.get(position), position);
         }
         return super.getItemViewType(position);
     }
@@ -98,6 +98,10 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<BaseViewHold
 
         void onItemLongClick(Object data, int position);
 
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mItemClickListener = listener;
     }
 
     /**

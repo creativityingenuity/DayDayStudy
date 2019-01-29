@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="fl">
+        <item>锁屏九宫格</item>
+        <item>树形列表</item>
+        <item>banner</item>
+        <item>更换皮肤</item>
+        <item>listviewdemo</item>
+    </string-array>
+</resources>

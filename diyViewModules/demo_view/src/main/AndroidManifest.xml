@@ -16,8 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".treeview.sf.TreeViewActivity"></activity>
-        <activity android:name=".treeview.zj.TreeViewActivity1"></activity>
+        <activity android:name=".treeview.sf.TreeViewActivity" />
+        <activity android:name=".treeview.zj.TreeViewActivity1" />
+        <activity android:name=".lockview.LockScreenActivity" />
+        <activity android:name=".bannerview.BannerActivity" />
+        <activity android:name=".changeskin.ChangeSkinActivity" />
+        <activity android:name=".listview.ListViewPracticeActivity"></activity>
     </application>
 
 </manifest>

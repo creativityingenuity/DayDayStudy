@@ -1,10 +1,13 @@
 package com.yt.demo_view.treeview.zj;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
+import com.yt.demo_view.MainActivity;
 import com.yt.demo_view.R;
+import com.yt.demo_view.lockview.LockScreenActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +30,6 @@ public class TreeViewActivity1 extends AppCompatActivity {
             mAdapter.setOnTreeNodeClickListener(new TreeListViewAdapter.OnTreeNodeClickListener() {
                 @Override
                 public void onClick(Node node, int position) {
-//                    node.
                 }
             });
         } catch (IllegalAccessException e) {
@@ -57,4 +59,7 @@ public class TreeViewActivity1 extends AppCompatActivity {
     }
 
 
+    public static void startAction(MainActivity activity) {
+        activity.startActivity(new Intent(activity,TreeViewActivity1.class));
+    }
 }

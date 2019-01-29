@@ -26,15 +26,16 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     /**
      * 获取view
+     *
      * @param viewID
      * @param <T>
      * @return
      */
-    public <T extends View> T  getView(int viewID){
+    public <T extends View> T getView(int viewID) {
         View view = mView.get(viewID);
-        if(view == null){
+        if (view == null) {
             view = itemView.findViewById(viewID);
-            mView.put(viewID,view);
+            mView.put(viewID, view);
         }
 
         return (T) view;
@@ -44,7 +45,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
     /**
      * 设置文本
      */
-    public BaseViewHolder setText(int viewId, CharSequence value){
+    public BaseViewHolder setText(int viewId, CharSequence value) {
         TextView view = getView(viewId);
         view.setText(value);
         return this;
@@ -64,9 +65,9 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     /**
      * 设置点击事件
-     * @param listener
      */
-    public void setOnItemClickListener(View.OnClickListener listener){
-        itemView.setOnClickListener(listener);
+    public BaseViewHolder setOnItemClick(@IdRes int viewId, View.OnClickListener listener) {
+        getView(viewId).setOnClickListener(listener);
+        return this;
     }
 }

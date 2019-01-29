@@ -9,6 +9,14 @@ import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
+import com.yt.demo_view.bannerview.BannerActivity;
+import com.yt.demo_view.changeskin.ChangeSkinActivity;
+import com.yt.demo_view.listview.ListViewPracticeActivity;
+import com.yt.demo_view.lockview.LockScreenActivity;
+import com.yt.demo_view.treeview.zj.TreeViewActivity1;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * 项目中以及闲暇写的UI效果
@@ -33,7 +41,36 @@ public class MainActivity extends AppCompatActivity {
         //多个轴对齐方式（交叉轴的起点对齐）
         flexBoxManager.setJustifyContent(JustifyContent.FLEX_START);
         mRecyclerView.setLayoutManager(flexBoxManager);
-        mRecyclerView.setAdapter(new FlexboxAdapter());
+        ArrayList<String> strings = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.fl)));
+        FlexboxAdapter flexboxAdapter = new FlexboxAdapter(strings, R.layout.item_flow_text);
+        mRecyclerView.setAdapter(flexboxAdapter);
+        flexboxAdapter.setOnItemClickListener(mClickListener);
     }
+
+    private CommonAdapter.OnItemClickListener mClickListener = new CommonAdapter.OnItemClickListener() {
+        @Override
+        public void onItemClick(Object data, int position) {
+            switch (position){
+                case 0:
+                    LockScreenActivity.startAction(MainActivity.this);
+                    break;
+                case 1:
+                    TreeViewActivity1.startAction(MainActivity.this);
+                    break;
+                case 2:
+                    BannerActivity.startAction(MainActivity.this);
+                    break;
+                case 3:
+                    ChangeSkinActivity.startAction(MainActivity.this);
+                    break;
+                case 4:
+                    ListViewPracticeActivity.startAction(MainActivity.this);
+                    break;
+                case 5:
+                    LockScreenActivity.startAction(MainActivity.this);
+                    break;
+            }
+        }
+    };
 
 }
