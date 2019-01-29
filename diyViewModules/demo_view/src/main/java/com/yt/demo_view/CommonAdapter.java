@@ -12,25 +12,41 @@ import java.util.ArrayList;
  * Created by YT on 2019/1/28.
  */
 
-public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
+public abstract class CommonAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
     protected ArrayList<T> mData;
     protected int mLayoutId;
+    /**
+     * 多布局
+     */
     private MultipleType<T> mMultipleType;
+
     private OnItemClickListener mItemClickListener;
     private OnItemLongClickListener mItemLongClickListener;
 
-    public CommonAdapter(ArrayList<T> mData, int mLayoutId) {
-        this.mData = mData;
-        this.mLayoutId = mLayoutId;
+    public CommonAdapter(ArrayList<T> data, int layoutId) {
+        this.mData = data;
+        this.mLayoutId = layoutId;
+    }
+
+    /**
+     * 多布局使用的构造
+     */
+    public CommonAdapter(ArrayList<T> data, int layoutId,MultipleType multipleType) {
+        this.mData = data;
+        this.mLayoutId = layoutId;
+        this.mMultipleType = multipleType;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(mLayoutId, null));
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if(mMultipleType!=null){
+            mLayoutId = viewType;
+        }
+        return new BaseViewHolder(LayoutInflater.from(parent.getContext()).inflate(mLayoutId, parent,false));
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(BaseViewHolder holder, final int position) {
         //绑定数据
         bindData(holder, mData.get(position), position);
         if (mItemClickListener != null) {
@@ -54,14 +70,14 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder> 
     }
 
     /**
-     * 多布局
-     *
      * @param position
-     * @return
+     * @return 根据position位置设置不同视图类型
      */
     @Override
     public int getItemViewType(int position) {
-
+        if(mData!=null&&mData.size()>0){
+            return mMultipleType.getLayoutId(mData.get(position),position);
+        }
         return super.getItemViewType(position);
     }
 
@@ -87,8 +103,8 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder> 
     /**
      * 多布局条目类型
      */
-    interface MultipleType<T> {
-        int getLayoutId(T item, int position);
+    interface MultipleType<V> {
+        int getLayoutId(V item, int position);
     }
 
     /**
@@ -98,5 +114,5 @@ public abstract class CommonAdapter<T> extends RecyclerView.Adapter<ViewHolder> 
      * @param t
      * @param position
      */
-    protected abstract void bindData(ViewHolder holder, T t, int position);
+    protected abstract void bindData(BaseViewHolder holder, T t, int position);
 }

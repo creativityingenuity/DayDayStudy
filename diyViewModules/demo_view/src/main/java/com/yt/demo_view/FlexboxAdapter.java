@@ -8,13 +8,14 @@ import java.util.ArrayList;
  */
 
 public class FlexboxAdapter extends CommonAdapter<String> {
-    public FlexboxAdapter(ArrayList<String> mData, int mLayoutId) {
-        super(mData, mLayoutId);
+
+
+    public FlexboxAdapter(ArrayList<String> data, int layoutId) {
+        super(data, layoutId);
     }
 
-
     @Override
-    protected void bindData(ViewHolder holder, String s, int position) {
+    protected void bindData(BaseViewHolder holder, String s, int position) {
 
     }
 }
