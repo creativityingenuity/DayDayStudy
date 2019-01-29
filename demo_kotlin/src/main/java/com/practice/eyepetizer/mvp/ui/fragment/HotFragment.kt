@@ -3,6 +3,7 @@ package com.practice.eyepetizer.mvp.ui.fragment
 import android.os.Bundle
 import cn.yt.demo_kotlin.R
 import com.practice.eyepetizer.base.BaseFragment
+import com.practice.eyepetizer.globle.Constants
 import com.practice.eyepetizer.globle.showToast
 import com.practice.eyepetizer.mvp.contract.HotContract
 import com.practice.eyepetizer.mvp.model.bean.TabInfoBean
@@ -32,6 +33,7 @@ class HotFragment : BaseFragment(), HotContract.View {
         fun getInstance(title: String): HotFragment {
             val fragment = HotFragment()
             val bundle = Bundle()
+            bundle.putString(Constants.FRAGMENT_TITLE,title)
             fragment.arguments = bundle
             return fragment
         }
@@ -45,6 +47,8 @@ class HotFragment : BaseFragment(), HotContract.View {
             StatusBarUtil.darkMode(it)
             StatusBarUtil.setPaddingSmart(it, toolbar)
         }
+        var title = arguments?.getString(Constants.FRAGMENT_TITLE)
+        tv_header_title.text = title
         mLayoutStatusView = multipleStatusView
     }
 
