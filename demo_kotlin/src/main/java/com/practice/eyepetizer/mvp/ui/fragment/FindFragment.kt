@@ -49,7 +49,7 @@ class FindFragment : BaseFragment() {
 
 
     override fun loadData() {
-    }
 
+    }
 
 }
