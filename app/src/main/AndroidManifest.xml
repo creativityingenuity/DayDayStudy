@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.yt.daydaystudy">
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -12,6 +13,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme">
 
         <!-- 图片裁剪 -->
@@ -37,14 +39,6 @@
         <activity
             android:name=".demo_greendao.GreenDaoActivity"
             android:theme="@style/GreenDaoTheme" />
-        <activity android:name=".test_diyview.DiyViewActivity" />
-        <activity android:name=".test_01.Main2Activity" />
-
-        <receiver
-            android:name=".test_diyview.MyReceiver"
-            android:enabled="true"
-            android:exported="true" />
-
         <activity android:name=".demo_arouter.ArouterDemoActivity" />
         <activity android:name=".demo_recyclerview.RecyclerViewDemoActivity" />
         <activity android:name=".demo_arouter.SimpleActivity" />

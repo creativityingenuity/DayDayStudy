@@ -5,10 +5,8 @@
         <item>拍照上传</item>
         <item>沉浸式状态栏</item>
         <item>greendao_demo</item>
-        <item>自定义view练习</item>
         <item>ArouterDemo</item>
-        <item>recyclerviewDemo</item>
-        <item>伸缩toolbar</item>
+        <item>toolbar</item>
         <item>kotlin</item>
     </array>
 </resources>

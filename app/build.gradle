@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 //greenDao依赖
 apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
@@ -15,6 +16,7 @@ android {
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: project.getName()]
+                includeCompileClasspath true
             }
         }
     }
@@ -38,23 +40,20 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':lib_utils')
-    compile project(':lib_statusbar')
     //greendao
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'org.greenrobot:greendao:3.2.2'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-
     compile 'com.alibaba:arouter-api:1.3.1'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     //rxjava
-    //RxJava的依赖包（我使用的最新版本）
+    //RxJava的依赖包
     compile 'io.reactivex.rxjava2:rxjava:2.0.1'
     //RxAndroid的依赖包
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-}
-repositories {
-    mavenCentral()
+    //Google开源的一个布局控件
+        implementation 'com.google.android:flexbox:0.3.1'
+    implementation 'com.android.support:design:26.1.0'
 }
 
-apply plugin: 'kotlin-android-extensions'
