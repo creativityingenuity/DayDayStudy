@@ -52,6 +52,14 @@ android {
             outputFileName = "开眼_v${variant.versionName}_${variant.name}.apk"
         }
     }
+
+    dexOptions {
+        jumboMode true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {

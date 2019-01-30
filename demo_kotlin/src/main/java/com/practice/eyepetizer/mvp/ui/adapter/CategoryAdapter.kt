@@ -13,6 +13,7 @@ import com.practice.eyepetizer.glide.GlideApp
 import com.practice.eyepetizer.globle.Constants
 import com.practice.eyepetizer.globle.GlobleApplication
 import com.practice.eyepetizer.mvp.model.bean.CategoryBean
+import com.practice.eyepetizer.mvp.ui.activity.CategoryDetailActivity
 
 
 /**
@@ -59,7 +60,7 @@ class CategoryAdapter(mContext: Context, categoryList: ArrayList<CategoryBean>, 
 
         holder.setOnItemClickListener(object :View.OnClickListener{
             override fun onClick(p0: View?) {
-                val intent = Intent(mContext as Activity,CategoryDetailActivity::class.java)
+                val intent = Intent(mContext as Activity, CategoryDetailActivity::class.java)
                 intent.putExtra(Constants.BUNDLE_CATEGORY_DATA,data)
                 mContext.startActivity(intent)
             }

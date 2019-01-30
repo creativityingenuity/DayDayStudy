@@ -8,11 +8,12 @@ import android.view.View
 import cn.yt.demo_kotlin.R
 
 
-import com.hazz.kotlinmvp.mvp.presenter.CategoryPresenter
+
 import com.practice.eyepetizer.base.BaseFragment
 import com.practice.eyepetizer.globle.showToast
 import com.practice.eyepetizer.mvp.contract.CategoryContract
 import com.practice.eyepetizer.mvp.model.bean.CategoryBean
+import com.practice.eyepetizer.mvp.presenter.CategoryPresenter
 import com.practice.eyepetizer.mvp.ui.adapter.CategoryAdapter
 import com.practice.eyepetizer.net.exception.ErrorStatus
 import com.practice.eyepetizer.utils.DisplayManager

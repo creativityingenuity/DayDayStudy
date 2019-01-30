@@ -5,16 +5,17 @@ import android.graphics.Color
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import cn.yt.demo_kotlin.R
-import com.hazz.kotlinmvp.mvp.presenter.CategoryDetailPresenter
+
 import com.practice.eyepetizer.base.BaseActivity
 import com.practice.eyepetizer.glide.GlideApp
 import com.practice.eyepetizer.globle.Constants
 import com.practice.eyepetizer.mvp.contract.CategoryDetailContract
 import com.practice.eyepetizer.mvp.model.bean.CategoryBean
 import com.practice.eyepetizer.mvp.model.bean.HomeBean
+import com.practice.eyepetizer.mvp.presenter.CategoryDetailPresenter
 import com.practice.eyepetizer.mvp.ui.adapter.CategoryDetailAdapter
 import com.practice.eyepetizer.utils.StatusBarUtil
-
+import kotlinx.android.synthetic.main.activity_category_detail.*
 
 
 /**
@@ -44,8 +45,7 @@ class CategoryDetailActivity : BaseActivity(), CategoryDetailContract.View {
         categoryData = intent.getSerializableExtra(Constants.BUNDLE_CATEGORY_DATA) as CategoryBean?
 
     }
-
-    override fun layoutId(): Int = R.layout.activity_category_detail
+    override fun getLayoutId(): Int  =  R.layout.activity_category_detail
 
     @SuppressLint("SetTextI18n")
     override fun initView() {

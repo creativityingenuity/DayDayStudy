@@ -1,4 +1,4 @@
-package com.hazz.kotlinmvp.mvp.presenter
+package com.practice.eyepetizer.mvp.presenter
 
 import com.hazz.kotlinmvp.mvp.model.CategoryModel
 import com.practice.eyepetizer.mvp.base.BasePresenter

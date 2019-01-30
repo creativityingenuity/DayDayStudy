@@ -1,31 +1,54 @@
 package com.practice.eyepetizer.mvp.ui.adapter
 
+import android.annotation.SuppressLint
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.practice.eyepetizer.base.BaseFragment
 
 /**
  * Call:vipggxs@163.com
  * Created by YT on 2019/1/25.
  */
-class BaseFragmentAdapter(fm: FragmentManager?, framents: ArrayList<BaseFragment>, titles: ArrayList<String>) : FragmentPagerAdapter(fm) {
-    var mFragmentList = ArrayList<BaseFragment>()
-    var mTabTitleList = ArrayList<String>()
+class BaseFragmentAdapter : FragmentPagerAdapter {
 
-    init {
-        mFragmentList = framents
-        mTabTitleList = titles
+    private var fragmentList: List<Fragment>? = ArrayList()
+    private var mTitles: List<String>? = null
+
+    constructor(fm: FragmentManager, fragmentList: List<Fragment>) : super(fm) {
+        this.fragmentList = fragmentList
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return mTabTitleList[position]
+    constructor(fm: FragmentManager, fragmentList: List<Fragment>, mTitles: List<String>) : super(fm) {
+        this.mTitles = mTitles
+        setFragments(fm, fragmentList, mTitles)
     }
+
+    //刷新fragment
+    @SuppressLint("CommitTransaction")
+    private fun setFragments(fm: FragmentManager, fragments: List<Fragment>, mTitles: List<String>) {
+        this.mTitles = mTitles
+        if (this.fragmentList != null) {
+            val ft = fm.beginTransaction()
+            fragmentList?.forEach {
+                ft.remove(it)
+            }
+            ft?.commitAllowingStateLoss()
+            fm.executePendingTransactions()
+        }
+        this.fragmentList = fragments
+        notifyDataSetChanged()
+    }
+
+    override fun getPageTitle(position: Int): CharSequence {
+        return if (null != mTitles) mTitles!![position] else ""
+    }
+
     override fun getItem(position: Int): Fragment {
-        return mFragmentList[position]
+        return fragmentList!![position]
     }
 
     override fun getCount(): Int {
-        return mTabTitleList.size
+        return fragmentList!!.size
     }
+
 }

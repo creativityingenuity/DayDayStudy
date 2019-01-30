@@ -1,6 +1,7 @@
 package com.practice.eyepetizer.mvp.ui.fragment
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import cn.yt.demo_kotlin.R
 import com.practice.eyepetizer.base.BaseFragment
 import com.practice.eyepetizer.globle.Constants
@@ -26,7 +27,7 @@ class HotFragment : BaseFragment(), HotContract.View {
     /**
      * fragment列表
      */
-    var mFragmentList = ArrayList<BaseFragment>()
+    var mFragmentList = ArrayList<Fragment>()
     private val mPresenter by lazy { HotPresenter() }
 
     companion object {
