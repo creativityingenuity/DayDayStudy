@@ -45,6 +45,8 @@
         <activity android:name="com.practice.eyepetizer.mvp.ui.activity.VideoDetailActivity"/>
         <!--搜索界面-->
         <activity android:name="com.practice.eyepetizer.mvp.ui.activity.SearchActivity"/>
+        <!--类别详情-->
+        <activity android:name="com.practice.eyepetizer.mvp.ui.activity.CategoryDetailActivity"/>
     </application>
 
 </manifest>

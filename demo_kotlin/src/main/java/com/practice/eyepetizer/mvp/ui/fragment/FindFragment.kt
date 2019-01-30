@@ -38,8 +38,10 @@ class FindFragment : BaseFragment() {
 override fun init(savedInstanceState: Bundle?) {
 
         //状态栏透明和间距处理
-        activity?.let { StatusBarUtil.darkMode(it) }
-        activity?.let { StatusBarUtil.setPaddingSmart(it, toolbar) }
+    activity?.let {
+        StatusBarUtil.darkMode(it)
+        StatusBarUtil.setPaddingSmart(it, toolbar)
+    }
 
         tv_header_title.text = mTitle
 
@@ -48,17 +50,20 @@ override fun init(savedInstanceState: Bundle?) {
         fragments.add(FollowFragment.getInstance("关注"))
         fragments.add(CategoryFragment.getInstance("分类"))
 
-        /**
-         * getSupportFragmentManager() 替换为getChildFragmentManager()
-         */
-        mViewPager.adapter = BaseFragmentAdapter(childFragmentManager, fragments, tabList)
-        mTabLayout.setupWithViewPager(mViewPager)
-        TabLayoutHelper.setUpIndicatorWidth(mTabLayout)
+
+
 
 
     }
 
 override fun loadData()  {
+
+    /**
+     * getSupportFragmentManager() 替换为getChildFragmentManager()
+     */
+    mViewPager.adapter = BaseFragmentAdapter(childFragmentManager, fragments, tabList)
+    mTabLayout.setupWithViewPager(mViewPager)
+    TabLayoutHelper.setUpIndicatorWidth(mTabLayout)
     }
 
 }

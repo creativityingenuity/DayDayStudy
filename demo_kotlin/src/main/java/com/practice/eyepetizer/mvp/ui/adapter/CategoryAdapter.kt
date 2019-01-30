@@ -29,7 +29,7 @@ class CategoryAdapter(mContext: Context, categoryList: ArrayList<CategoryBean>, 
     private var textTypeface:Typeface?=null
 
     init {
-        textTypeface = Typeface.createFromAsset(GlobleApplication.context.assets, "fonts/FZLanTingHeiS-DB1-GB-Regular.TTF")
+        textTypeface = Typeface.createFromAsset(GlobleApplication.context.assets, "font/FZLanTingHeiS-DB1-GB-Regular.TTF")
     }
     /**
      * 设置新数据

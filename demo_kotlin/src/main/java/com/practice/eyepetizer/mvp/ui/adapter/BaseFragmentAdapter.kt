@@ -5,10 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 
-/**
- * Call:vipggxs@163.com
- * Created by YT on 2019/1/25.
- */
+
 class BaseFragmentAdapter : FragmentPagerAdapter {
 
     private var fragmentList: List<Fragment>? = ArrayList()

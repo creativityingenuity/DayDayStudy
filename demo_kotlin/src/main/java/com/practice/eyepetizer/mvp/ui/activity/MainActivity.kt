@@ -87,7 +87,7 @@ class MainActivity : BaseActivity() {
                     transaction.add(R.id.fl_container, it, HomeFragment::class.java.simpleName)
                 }
             1 ->
-                mFindFragment.let {
+                mFindFragment?.let {
                     transaction.show(it)
                 } ?: FindFragment.getInstance(mTitles[1]).let {
                     mFindFragment = it

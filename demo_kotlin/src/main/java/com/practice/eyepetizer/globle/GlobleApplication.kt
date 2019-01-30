@@ -7,6 +7,7 @@ import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.BuildConfig
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
+import com.practice.eyepetizer.utils.DisplayManager
 import com.tencent.smtt.sdk.QbSdk
 import kotlin.properties.Delegates
 
@@ -22,6 +23,7 @@ class GlobleApplication : Application(){
         super.onCreate()
         context = applicationContext
         initConfig()
+        DisplayManager.init(this)
         initX5WebView()
     }
 
