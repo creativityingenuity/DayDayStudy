@@ -153,18 +153,8 @@ public class DemoDialog extends DialogFragment implements View.OnClickListener {
             //                leftButton.setOnClickListener(leftOCL);
             //            if (rightOCL!=null)
             //                rightButton.setOnClickListener(rightOCL);
-            //
-            //
-            //
-            //            Window win = airDialog.getWindow();
-            //            win.getDecorView().setPadding(0, 0, 0, 0);
-            //            WindowManager.LayoutParams lp = win.getAttributes();
-            //            lp.width = WindowManager.LayoutParams.MATCH_PARENT;
-            //            lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-            //            win.setAttributes(lp);
-            //            win.setGravity(Gravity.CENTER);
-            //            airDialog.setContentView(view);
-            //            airDialog.setCanceledOnTouchOutside(false);
+
+
 
             return dialog;
 

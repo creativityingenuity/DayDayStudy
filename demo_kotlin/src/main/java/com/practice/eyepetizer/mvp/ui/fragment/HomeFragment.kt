@@ -5,7 +5,6 @@ import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import cn.yt.demo_kotlin.R
-import com.orhanobut.logger.Logger
 import com.practice.eyepetizer.base.BaseFragment
 import com.practice.eyepetizer.globle.Constants
 import com.practice.eyepetizer.globle.newIntent
@@ -17,7 +16,7 @@ import com.practice.eyepetizer.mvp.ui.activity.SearchActivity
 import com.practice.eyepetizer.mvp.ui.adapter.HomeAdatper
 import com.practice.eyepetizer.net.exception.ErrorStatus
 import com.practice.eyepetizer.utils.StatusBarUtil
-import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import com.scwang.smartrefresh.header.MaterialHeader
 import kotlinx.android.synthetic.main.home_fragment.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -56,43 +55,75 @@ class HomeFragment : BaseFragment(), HomeContract.View {
         LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
     }
 
-    private val simpleDateFormat by lazy {
-        SimpleDateFormat("- MMM. dd, 'Brunch' -", Locale.ENGLISH)
-    }
-
     /**
      * 初始化view
      */
     override fun init(savedInstanceState: Bundle?) {
+        //状态栏透明和间距处理
+        activity?.let {
+            StatusBarUtil.darkMode(it)
+            StatusBarUtil.setPaddingSmart(it, toolbar)
+        }
+
         mPresenter.attachView(this)
-        mRefreshLayout.setRefreshHeader(ClassicsHeader(activity))
+        mRefreshLayout.setRefreshHeader(MaterialHeader(activity))
+//        mRefreshLayout.setEnableRefresh(true)
+//        mRefreshLayout.setEnableLoadmore(true)
         //下拉刷新
         mRefreshLayout.setOnRefreshListener {
             isRefresh = true
             mPresenter.requestHomeData(num)
-            mRefreshLayout.finishRefresh(1000)
         }
-        //加载更多
-        mRefreshLayout.setOnLoadmoreListener {
-            mRefreshLayout.finishLoadmore(2000)//传入false表示加载失败
-        }
+        //内容跟随偏移
+        mRefreshLayout.setEnableHeaderTranslationContent(true)
 
-
-        //recyclerview 滚动效果
         mRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    val childCount = mRecyclerView.childCount
+                    val itemCount = mRecyclerView.layoutManager.itemCount
+                    val firstVisibleItem = (mRecyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+                    if (firstVisibleItem + childCount == itemCount) {
+                        if (!loadingMore) {
+                            loadingMore = true
+                            mPresenter.loadMoreData()
+                        }
+                    }
+                }
+            }
 
+            //RecyclerView滚动的时候调用
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val currentVisibleItemPosition = linearLayoutManager.findFirstVisibleItemPosition()
+                if (currentVisibleItemPosition == 0) {
+                    //背景设置为透明
+                    toolbar.setBackgroundColor(getColor(R.color.color_translucent))
+                    iv_search.setImageResource(R.mipmap.ic_action_search_white)
+                    tv_header_title.text = ""
+                } else {
+                    if (mHomeAdapter?.mData!!.size > 1) {
+                        toolbar.setBackgroundColor(getColor(R.color.color_title_bg))
+                        iv_search.setImageResource(R.mipmap.ic_action_search_black)
+                        val itemList = mHomeAdapter!!.mData
+                        val item = itemList[currentVisibleItemPosition + mHomeAdapter!!.bannerItemSize - 1]
+                        if (item.type == "textHeader") {
+                            tv_header_title.text = item.data?.text
+                        } else {
+                            tv_header_title.text = simpleDateFormat.format(item.data?.date)
+                        }
+                    }
+                }
+
+
+            }
         })
 
         iv_search.setOnClickListener {
             openSearchActivity()
         }
         mLayoutStatusView = multipleStatusView
-
-        //状态栏透明和间距处理
-        activity?.let {
-            StatusBarUtil.darkMode(it)
-            StatusBarUtil.setPaddingSmart(it, toolbar)
-        }
     }
 
     /**
@@ -132,7 +163,6 @@ class HomeFragment : BaseFragment(), HomeContract.View {
 
     override fun setHomeData(homeBean: HomeBean) {
         mLayoutStatusView?.showContent()
-        Logger.d(homeBean)
 
         //adapter
         mHomeAdapter = activity?.let { HomeAdatper(it, homeBean.issueList[0].itemList) }
@@ -143,13 +173,17 @@ class HomeFragment : BaseFragment(), HomeContract.View {
     }
 
     override fun setMoreData(itemList: ArrayList<HomeBean.Issue.Item>) {
-        loadingMore = true
+        loadingMore = false
         mHomeAdapter?.addItemData(itemList)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         mPresenter.detachView()
+    }
+
+    private val simpleDateFormat by lazy {
+        SimpleDateFormat("- MMM. dd, 'Brunch' -", Locale.ENGLISH)
     }
 
     fun getColor(colorId: Int): Int {

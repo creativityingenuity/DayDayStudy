@@ -94,4 +94,5 @@ dependencies {
         exclude group: 'glide-parent'
     }
     implementation files('libs/tbs_sdk_thirdapp_v3.6.0.1315_43612_sharewithdownload_withoutGame_obfs_20180718_102847.jar')
+    implementation 'com.google.android:flexbox:0.3.1'
 }

@@ -43,6 +43,8 @@
         <activity android:name="com.practice.eyepetizer.mvp.ui.activity.PersonalHomepageActivity"/>
         <!--播放视频界面-->
         <activity android:name="com.practice.eyepetizer.mvp.ui.activity.VideoDetailActivity"/>
+        <!--搜索界面-->
+        <activity android:name="com.practice.eyepetizer.mvp.ui.activity.SearchActivity"/>
     </application>
 
 </manifest>
