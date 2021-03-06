@@ -1,0 +1,30 @@
+https://mp.weixin.qq.com/s/njD4f50zPEydrRcv5BZiEw
+https://juejin.cn/post/6905226221357891592#heading-31
+https://www.jianshu.com/p/5e5908ab3ea9
+https://www.jianshu.com/p/aa789ddef5a6
+手写实现一个网络框架
+图片的三级缓存中,图片加载到内存中,如果内存快爆了,会发生什么？怎么处理
+视频的时候网络请求很慢怎么优化
+为什么handler可以线程切换
+Bitmap高效加载
+Activity 生命周期，A启动B两个状态分别是什么 ，A的onStop一定会执行吗
+子线程是否可以 context.startActivity() (如ApplicationContext), 会不会有什么问题
+Android中如何查看一个对象的回收情况
+线程的几种状态
+Person person = new Person() 对象实例化过程
+Http和Https区别，SSL/TLS过程
+socket心跳包
+hashmap和hashtable区别
+ArrayList和LinkendList区别
+fragment正常添加和viewpager添加的区别，fragment懒加载原理，FragmentPagerAdapter 和 FragmentStatePagerAdapter
+基础类型字节，汉字占几个字节
+Contentprovide执行时机
+工作中遇到的难题怎么解决的
+kotlin什么时候用分号
+retrofit设计模式
+HTTPS具体步骤
+服务端返回错误的json数据，客户端怎么自定义model，避免出错
+message回收策略
+服务和广播
+handler缓存池大小
+https://mp.weixin.qq.com/s/UGEEFC-OZtFqP4V7-11SIA
