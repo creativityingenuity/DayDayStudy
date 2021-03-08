@@ -1,7 +1,5 @@
 https://mp.weixin.qq.com/s/njD4f50zPEydrRcv5BZiEw
 https://juejin.cn/post/6905226221357891592#heading-31
-https://www.jianshu.com/p/5e5908ab3ea9
-https://www.jianshu.com/p/aa789ddef5a6
 手写实现一个网络框架
 图片的三级缓存中,图片加载到内存中,如果内存快爆了,会发生什么？怎么处理
 视频的时候网络请求很慢怎么优化
